@@ -2,6 +2,7 @@ import { NowRequest, NowResponse } from '@vercel/node'
 import getTimedText from '../utils/browser'
 import getVTT from '../utils/fetch'
 import formatUrl from '../utils/url'
+import vttToJson from '../utils/vtt'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -9,7 +10,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedUrl = formatUrl(url)
     const timedTextUrl = await getTimedText(formattedUrl)
     const vtt = await getVTT(timedTextUrl)
-    res.send({ vtt })
+    const formattedVtt = vttToJson(vtt)
+    res.send({ formattedVtt })
   } catch (error) {
     console.error(error)
     res.send(error)
