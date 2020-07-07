@@ -12,9 +12,7 @@ export default async function getScreenshot(url: string) {
   await page.setRequestInterception(true)
 
   page.on('request', request => {
-    if (request.resourceType() === 'xhr') {
-      console.log(request.url())
-    }
+    console.log(request.url())
     request.continue()
   })
 
@@ -22,11 +20,17 @@ export default async function getScreenshot(url: string) {
     waitUntil: 'networkidle0'
   })
 
-  // const selector = await page.$('.ytp-subtitles-button ytp-button')
+  await page.evaluate(() => {
+    const el = document.querySelector('#player') as HTMLDivElement
+    const playButton = el.querySelector('.ytp-large-play-button') as HTMLButtonElement
+    playButton.click()
+  })
 
-  // await page.evaluate(el => {
-  //   el.click()
-  // }, selector)
+  await page.evaluate(() => {
+    const el = document.querySelector('#player') as HTMLDivElement
+    const captionButton = el.querySelector('.ytp-subtitles-button') as HTMLButtonElement
+    captionButton.click()
+  })
 
   const file = await page.screenshot({
     type: 'png'
