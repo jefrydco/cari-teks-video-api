@@ -8,6 +8,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     res.setHeader("Content-Type", `image/png`);
     res.end(file);
   } catch (error) {
+    console.error(error)
     res.send(error)
   }
 }
