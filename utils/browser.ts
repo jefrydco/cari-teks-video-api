@@ -11,12 +11,15 @@ export default async function getTimedText(url: string) {
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
-  const urls = []
-  const types = []
+  let timedTextUrl: string;
 
   page.on('request', request => {
-    urls.push(request.url())
-    types.push(request.resourceType())
+    if (request.resourceType() === 'xhr') {
+      const _timedTextUrl = request.url()
+      if (_timedTextUrl.includes('https://www.youtube.com/api/timedtext')) {
+        timedTextUrl = _timedTextUrl
+      }
+    }
     request.continue()
   })
 
@@ -37,5 +40,5 @@ export default async function getTimedText(url: string) {
   })
 
   await browser.close()
-  return { urls, types }
+  return timedTextUrl
 }
