@@ -12,7 +12,7 @@ export default async function getScreenshot(url: string) {
   await page.setRequestInterception(true)
 
   page.on('request', request => {
-    console.log(request.url)
+    console.log(request.url())
     request.continue()
   })
 
@@ -20,11 +20,11 @@ export default async function getScreenshot(url: string) {
     waitUntil: 'networkidle0'
   })
 
-  // const selector = await page.$('.ytp-subtitles-button ytp-button')
+  const selector = await page.$('.ytp-subtitles-button ytp-button')
 
-  // await page.evaluate(el => {
-  //   el.click()
-  // }, selector)
+  await page.evaluate(el => {
+    el.click()
+  }, selector)
 
   const file = await page.screenshot({
     type: 'png'
