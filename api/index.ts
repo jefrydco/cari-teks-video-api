@@ -7,7 +7,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const url = req.query.url as string || 'https://www.youtube.com/embed/3Fx5Q8xGU8k?hl=en&cc_lang_pref=en&cc_load_policy=1&autoplay=1'
     const timedTextUrl = await getTimedText(url)
     const vtt = await getVTT(timedTextUrl)
-    res.send({ vtt })
+    res.send({ url })
   } catch (error) {
     console.error(error)
     res.send(error)
