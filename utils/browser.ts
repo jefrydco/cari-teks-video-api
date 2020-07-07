@@ -17,7 +17,7 @@ export default async function getTimedText(url: string) {
     if (request.resourceType() === 'xhr') {
       const _timedTextUrl = request.url()
       if (_timedTextUrl.includes('https://www.youtube.com/api/timedtext')) {
-        timedTextUrl = _timedTextUrl
+        timedTextUrl = _timedTextUrl.replace('json3', 'vtt')
       }
     }
     request.continue()
