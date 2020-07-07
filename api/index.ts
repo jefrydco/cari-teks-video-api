@@ -3,7 +3,7 @@ import getTimedText from '../utils/browser'
 import getVTT from '../utils/fetch'
 import formatUrl from '../utils/url'
 import vttToJson from '../utils/vtt'
-import sanitizeString from '../utils/string'
+import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -11,8 +11,12 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedUrl = formatUrl(url)
     const timedTextUrl = await getTimedText(formattedUrl)
     const vtt = await getVTT(timedTextUrl)
-    const sanitizedVtt = sanitizeString(vtt)
-    const formattedVtt = vttToJson(sanitizedVtt)
+    const strippedVtt = stripHtml(vtt)
+    const formattedVtt = vttToJson(strippedVtt)
+      .map(item => ({
+        ...item,
+        text: stripWhitespaceNewLine(item.text)
+      }))
     res.send({ formattedVtt })
   } catch (error) {
     console.error(error)

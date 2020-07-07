@@ -1,8 +1,12 @@
-import stripHtml from 'string-strip-html'
+import stripHTML from 'string-strip-html'
 
-export default function sanitizeString(string: string) {
-  return stripHtml(string)
+export function stripHtml(string: string) {
+  return stripHTML(string)
     .replace(/(<([^>]+)>)/ig, '')
+}
+
+export function stripWhitespaceNewLine(string: string) {
+  return string
     .replace(/ {1,}/g, ' ')
     .replace(/(?:\r\n|\r|\n)/g, '')
 }
