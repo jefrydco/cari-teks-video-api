@@ -8,5 +8,5 @@ export function stripHtml(string: string) {
 export function stripWhitespaceNewLine(string: string) {
   return string
     .replace(/ {1,}/g, ' ')
-    .replace(/(?:\r\n|\r|\n)/g, '')
+    .replace(/(?:\r\n|\r|\n)/g, ' ')
 }
