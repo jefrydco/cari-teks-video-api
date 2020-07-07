@@ -1,7 +1,14 @@
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
 
-export default async function getVTT(url: string) {
+export async function getVTT(url: string) {
   const res = await fetch(url).then(_ => _.text())
+  return res
+}
+
+export async function getJson(url: string): Promise<Array<Record<string, any>>> {
+  const res = await fetch(url)
+    .then(_ => _.json())
+    .then(({ formattedVtt }) => formattedVtt)
   return res
 }
