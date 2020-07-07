@@ -11,8 +11,10 @@ export default async function getScreenshot(url: string) {
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
+  const urls = []
+
   page.on('request', request => {
-    console.log(request.url())
+    urls.push(request.url())
     request.continue()
   })
 
@@ -32,10 +34,10 @@ export default async function getScreenshot(url: string) {
     captionButton.click()
   })
 
-  const file = await page.screenshot({
-    type: 'png'
-  })
+  // const file = await page.screenshot({
+  //   type: 'png'
+  // })
 
   await browser.close()
-  return file
+  return urls
 }
