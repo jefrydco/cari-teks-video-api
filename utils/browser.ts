@@ -1,7 +1,7 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
-export default async function getScreenshot(url: string) {
+export default async function getTimedText(url: string) {
   const browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,
@@ -12,9 +12,11 @@ export default async function getScreenshot(url: string) {
   await page.setRequestInterception(true)
 
   const urls = []
+  const types = []
 
   page.on('request', request => {
     urls.push(request.url())
+    types.push(request.resourceType())
     request.continue()
   })
 
@@ -34,10 +36,6 @@ export default async function getScreenshot(url: string) {
     captionButton.click()
   })
 
-  // const file = await page.screenshot({
-  //   type: 'png'
-  // })
-
   await browser.close()
-  return urls
+  return { urls, types }
 }
