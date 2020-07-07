@@ -11,6 +11,11 @@ export default async function getScreenshot(url: string) {
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
+  page.on('request', request => {
+    console.log(request.url)
+    request.continue()
+  })
+
   await page.goto(url, {
     waitUntil: 'networkidle0'
   })
