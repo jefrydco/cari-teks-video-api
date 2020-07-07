@@ -12,7 +12,9 @@ export default async function getScreenshot(url: string) {
   await page.setRequestInterception(true)
 
   page.on('request', request => {
-    console.log(request.url())
+    if (request.resourceType() === 'xhr') {
+      console.log(request.url())
+    }
     request.continue()
   })
 
