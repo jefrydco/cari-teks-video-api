@@ -1,0 +1,12 @@
+{
+  "name": "cari-teks-video-api",
+  "version": "0.0.1",
+  "description": "API service for cari teks video",
+  "main": "index.ts",
+  "repository": "git@github.com:jefrydco/cari-teks-video-api.git",
+  "author": "@jefrydco",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/node": "^1.7.1"
+  }
+}
