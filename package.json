@@ -17,7 +17,7 @@
     "es6-promise": "^4.2.8",
     "fuse.js": "^6.4.0",
     "isomorphic-fetch": "^2.2.1",
-    "puppeteer-core": "3.1.0",
+    "puppeteer-core": "3.3.0",
     "string-strip-html": "^4.5.0",
     "subtitle": "^2.0.3"
   }
