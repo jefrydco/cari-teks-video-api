@@ -1,5 +1,10 @@
 {
   "extends": [
     "config:base"
+  ],
+  "ignoreDeps": [
+    "puppeteer-core",
+    "chrome-aws-lambda",
+    "@vercel/node"
   ]
 }
