@@ -7,7 +7,7 @@
   "author": "@jefrydco",
   "license": "MIT",
   "devDependencies": {
-    "@vercel/node": "^1.7.1"
+    "@vercel/node": "1.7.1"
   },
   "dependencies": {
     "@types/puppeteer-core": "^2.0.0",

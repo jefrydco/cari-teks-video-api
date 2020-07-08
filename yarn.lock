@@ -38,7 +38,7 @@
   dependencies:
     "@types/node" "*"
 
-"@vercel/node@^1.7.1":
+"@vercel/node@1.7.1":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.7.1.tgz#cdf9b2226cbc469228aae6369b2b21db4c83dc69"
   integrity sha512-Lp6l3526xQ/srCqkXE9/E+gykAcpM/vut4zFo5NA9+syGxZt1nlVAznhNVkgsSW4mbRIE67KIfi7SII55dW7uw==
