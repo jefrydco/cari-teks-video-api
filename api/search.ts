@@ -21,7 +21,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const searchResult = fuzzySearch(formattedVtt, q)
-    // logger.info({ searchResult }, 'SEARCH_RESULT')
+    logger.info({ searchResult }, 'SEARCH_RESULT')
 
     let page = parseInt(req.query.page as string) || 1
     let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
