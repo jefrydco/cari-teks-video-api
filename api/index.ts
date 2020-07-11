@@ -26,6 +26,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     res.send({ formattedVtt })
   } catch (error) {
-    Boom.internal(error)
+    console.error(error)
+    res.send(Boom.internal())
   }
 }

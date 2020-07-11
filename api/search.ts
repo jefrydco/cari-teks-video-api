@@ -1,4 +1,5 @@
 import { NowRequest, NowResponse } from "@vercel/node"
+import Boom from '@hapi/boom'
 import { getJson } from "../utils/fetch"
 import fuzzySearch from "../utils/fuzy"
 import { searchQuery } from "../utils/validator"
@@ -17,6 +18,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     res.send({ searchResult })
   } catch (error) {
     console.error(error)
-    res.send(error)
+    res.send(Boom.internal())
   }
 }
