@@ -40,10 +40,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     if (isExists(req.query.page as string)) {
-      logger.info(String(req.query.page as string), 'PAGE_QUERY')
       const page = parseInt(req.query.page as string)
-      logger.info(String(page), 'PAGE')
       const paginated = paginate(formattedVtt, page)
+      // logger.info({ paginated }, 'PAGINATED')
+
       return res.send(new ResponseData(paginated, { page }).get())
     }
 
