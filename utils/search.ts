@@ -5,7 +5,7 @@ export function fuzzySearch(list: Array<Record<string, any>>, q: string) {
     keys: ['text'],
     includeMatches: true,
     minMatchCharLength: 3,
-    threshold: 0.3
+    threshold: 0.5
   })
   return fuse.search(q)
 }
