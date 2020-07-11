@@ -20,16 +20,16 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const url = req.query.url as string
     const formattedUrl = formatUrl(url)
-    logger.info({ formattedUrl })
+    logger.info('FORMATTED_URL', formattedUrl)
 
     const timedTextUrl = await getTimedText(formattedUrl)
-    logger.info({ timedTextUrl })
+    logger.info('TIMED_TEXT_URL', timedTextUrl)
 
     const vtt = await getVTT(timedTextUrl)
-    logger.info({ vtt })
+    logger.info('VTT', vtt)
 
     const strippedVtt = stripHtml(vtt)
-    logger.info({ strippedVtt })
+    logger.info('STRIPPED_VTT', strippedVtt)
 
     const formattedVtt = vttToJson(strippedVtt)
       .map(item => ({
@@ -37,11 +37,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         end: toSecond(item.end as number),
         text: stripWhitespaceNewLine(item.text)
       }))
-    logger.info({ formattedVtt })
+    logger.info('FORMATTED_VTT', formattedVtt)
 
     const page = parseInt(req.query.page as string)
     if (isExists(page)) {
-      logger.info('HERE')
+      logger.info('HERE', page)
       const paginated = paginate(formattedVtt, page)
       return res.send(new ResponseData(paginated, { page }).get())
     }
