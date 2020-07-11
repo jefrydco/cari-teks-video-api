@@ -1,13 +1,20 @@
 import { NowRequest, NowResponse } from '@vercel/node'
+import Boom from '@hapi/boom'
 import { getTimedText } from '../utils/browser'
 import { getVTT } from '../utils/fetch'
 import { formatUrl } from '../utils/url'
 import { vttToJson } from '../utils/vtt'
 import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
+import { indexQuery } from '../utils/validator'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
-    const url = req.query.url as string || 'https://www.youtube.com/embed/3Fx5Q8xGU8k?hl=en&cc_lang_pref=en&cc_load_policy=1&autoplay=1'
+    indexQuery.validateAsync(req.query)
+  } catch (error) {
+    res.send(error)
+  }
+  try {
+    const url = req.query.url as string
     const formattedUrl = formatUrl(url)
     const timedTextUrl = await getTimedText(formattedUrl)
     const vtt = await getVTT(timedTextUrl)
@@ -19,7 +26,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     res.send({ formattedVtt })
   } catch (error) {
-    console.error(error)
-    res.send(error)
+    Boom.internal(error)
   }
 }
