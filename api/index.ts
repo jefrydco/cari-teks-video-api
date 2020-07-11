@@ -42,10 +42,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const page = parseInt(req.query.page as string)
     if (isExists(page)) {
       const paginated = paginate(formattedVtt, page)
-      return res.send(new ResponseData(paginated, { page }))
+      return res.send(new ResponseData(paginated, { page }).get())
     }
 
-    return res.send(new ResponseData(formattedVtt))
+    return res.send(new ResponseData(formattedVtt).get())
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())

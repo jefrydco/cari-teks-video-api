@@ -20,17 +20,17 @@ export class ResponseData {
     }
   }
 
-  toJSON() {
+  get() {
     if (isExists(this.options.page)) {
-      return JSON.stringify({
+      return {
         data: this.data,
         ...this.options
-      })
+      }
     }
-    return JSON.stringify({
+    return {
       data: this.data,
       ...this.options
-    })
+    }
   }
 }
 
