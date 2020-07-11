@@ -5,11 +5,9 @@ import { searchQuery } from "../utils/validator"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
-    searchQuery.validateAsync(req.query)
-  } catch (error) {
+    const { error } = searchQuery.validate(req.query)
     res.send(error)
-  }
-  try {
+
     const url = req.query.url as string
     const q = req.query.q as string
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)

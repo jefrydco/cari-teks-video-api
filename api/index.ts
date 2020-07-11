@@ -9,11 +9,9 @@ import { indexQuery } from '../utils/validator'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
-    indexQuery.validateAsync(req.query)
-  } catch (error) {
+    const { error } = indexQuery.validate(req.query)
     res.send(error)
-  }
-  try {
+
     const url = req.query.url as string
     const formattedUrl = formatUrl(url)
     const timedTextUrl = await getTimedText(formattedUrl)
