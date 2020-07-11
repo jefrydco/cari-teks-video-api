@@ -8,6 +8,7 @@ import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 import { indexQuery } from '../utils/validator'
 import { ResponseData } from '../utils/response'
 import { logger } from '../utils/logger'
+import { toSecond } from '../utils/time'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -31,7 +32,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const formattedVtt = vttToJson(strippedVtt)
       .map(item => ({
-        ...item,
+        start: toSecond(item.start as number),
+        end: toSecond(item.end as number),
         text: stripWhitespaceNewLine(item.text)
       }))
     logger.info({ formattedVtt })
