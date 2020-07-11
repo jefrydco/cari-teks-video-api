@@ -9,16 +9,16 @@ export default async function handler(req: NowRequest, res: NowResponse) {
   try {
     const { error } = searchQuery.validate(req.query)
     if (error) {
-      res.json(error)
+      res.send(error)
     }
 
     const url = req.query.url as string
     const q = req.query.q as string
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
     const searchResult = fuzzySearch(formattedVtt, q)
-    res.json(new ResponseData(searchResult))
+    res.send(new ResponseData(searchResult))
   } catch (error) {
     console.log(error)
-    res.json(Boom.internal())
+    res.send(Boom.internal())
   }
 }

@@ -10,4 +10,13 @@ export class ResponseData {
     this.status = status
     this.message = message
   }
+
+  toString() {
+    return JSON.stringify({
+      data: this.data,
+      code: this.code,
+      status: this.status,
+      message: this.message
+    })
+  }
 }
