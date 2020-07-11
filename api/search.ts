@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from "@vercel/node"
 import Boom from '@hapi/boom'
 import { getJson } from "../utils/fetch"
-import fuzzySearch from "../utils/fuzy"
+import { fuzzySearch } from "../utils/search"
 import { searchQuery } from "../utils/validator"
 import { ResponseData } from "../utils/response"
 import { logger } from "../utils/logger"
