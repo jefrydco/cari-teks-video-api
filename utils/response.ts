@@ -1,6 +1,5 @@
 import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
-import { logger } from "./logger"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
   const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
@@ -39,8 +38,6 @@ export function formatResponseData(data: Array<Record<string, any>>, options?: R
 
 // Taken from: https://stackoverflow.com/a/42761393
 export function paginate(array: Array<Record<string, any>>, pageNumber: number, pageSize: number) {
-  logger.info({ pageNumber })
-  logger.info({ pageSize })
   // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
 }
