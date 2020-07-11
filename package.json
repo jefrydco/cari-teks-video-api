@@ -10,6 +10,7 @@
     "@vercel/node": "^1.7.1"
   },
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
     "@types/puppeteer-core": "^2.0.0",
     "@types/string-strip-html": "^4.3.0",
     "@types/subtitle": "^2.0.2",
