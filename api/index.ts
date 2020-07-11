@@ -38,10 +38,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         end: toSecond(item.end as number),
         text: stripWhitespaceNewLine(item.text)
       }))
-    return res.send(formattedVtt)
-    logger.info({ length: formattedVtt.length })
-    logger.info({ divided: formattedVtt.length / DEFAULT_PAGINATION_SIZE })
-    logger.info({ formattedVtt }, 'FORMATTED_VTT')
+    // logger.info({ length: formattedVtt.length })
+    // logger.info({ divided: formattedVtt.length / DEFAULT_PAGINATION_SIZE })
+    // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     let page = parseInt(req.query.page as string) || 1
     let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
