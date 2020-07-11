@@ -39,20 +39,22 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
-    if (isExists(req.query.page as string)) {
-      const page = parseInt(req.query.page as string)
-      const url = `https://${req.headers.host}${req.url}`
-      const paginated = paginate(formattedVtt, page)
-      // logger.info({ paginated }, 'PAGINATED')
+    let page = 1
+    let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
 
-      return res.send(formatResponseData(paginated, {
-        page,
-        url,
-        dataLength: formattedVtt.length
-      }))
+    if (isExists(req.query.page as string)) {
+      page = parseInt(req.query.page as string)
+      reqUrl = `https://${req.headers.host}${req.url}`
     }
 
-    return res.send(formatResponseData(formattedVtt))
+    const paginated = paginate(formattedVtt, page)
+    // logger.info({ paginated }, 'PAGINATED')
+
+    return res.send(formatResponseData(paginated, {
+      page,
+      url,
+      dataLength: formattedVtt.length
+    }))
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())
