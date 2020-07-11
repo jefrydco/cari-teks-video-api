@@ -39,6 +39,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
+    logger.info({ page: req.query.page }, 'BEFORE_WOW')
     const page = parseInt(req.query.page as string)
     logger.info({ page }, 'WOW')
     if (isExists(page)) {
