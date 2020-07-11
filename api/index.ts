@@ -41,9 +41,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const page = parseInt(req.query.page as string)
     if (isExists(page)) {
+      logger.info('HERE')
       const paginated = paginate(formattedVtt, page)
       return res.send(new ResponseData(paginated, { page }).get())
     }
+    logger.info('THERE')
 
     return res.send(new ResponseData(formattedVtt).get())
   } catch (error) {
