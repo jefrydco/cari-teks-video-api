@@ -1,4 +1,5 @@
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
+import { ResponseDataOptions } from "./types"
 
 export class ResponseData {
   data: Record<string, any>
@@ -7,18 +8,26 @@ export class ResponseData {
   status: string
   message: string
 
-  constructor(data: Record<string, any>, page?: number, code: number = 200, status: string = "success", message: string = "") {
+  constructor(data: Record<string, any>, options?: ResponseDataOptions) {
     this.data = data
-    this.page = page
-    this.code = code
-    this.status = status
-    this.message = message
+    this.page = options.page
+    this.code = options.code || 200
+    this.status = options.status || 'success'
+    this.message = options.message || ''
   }
 
   toString() {
+    if (this.page) {
+      return JSON.stringify({
+        data: this.data,
+        page: this.page,
+        code: this.code,
+        status: this.status,
+        message: this.message
+      })
+    }
     return JSON.stringify({
       data: this.data,
-      page: this.page,
       code: this.code,
       status: this.status,
       message: this.message
