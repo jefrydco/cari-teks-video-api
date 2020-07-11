@@ -6,7 +6,9 @@ import { searchQuery } from "../utils/validator"
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
     const { error } = searchQuery.validate(req.query)
-    res.send(error)
+    if (error) {
+      res.send(error)
+    }
 
     const url = req.query.url as string
     const q = req.query.q as string
