@@ -15,7 +15,7 @@ export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked:
 
 // Taken from: https://github.com/krisk/Fuse/issues/6#issuecomment-455813098
 function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>, highlightClassName: string = 'ctv-marked') {
-  function set(obj: object, path: string, value: any) {
+  function set(obj: Record<string, any>, path: string, value: string) {
       const pathValue = path.split('.')
       let i: number
 
