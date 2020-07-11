@@ -7,7 +7,6 @@ import { formatResponseData, paginate } from "../utils/response"
 import { logger } from "../utils/logger"
 import { isExists } from "../utils/commons"
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
-import { markText } from "../utils/string"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
