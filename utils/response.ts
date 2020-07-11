@@ -1,8 +1,10 @@
 import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
+import { logger } from "./logger"
 
-function paginationUrlReplacer(type: PaginationUrlType, dataLength: number, options: ResponseDataFormatterOptions): string | null {
-  const last = dataLength / options.size
+function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
+  const last = options.dataLength / options.size
+  logger.info({ ...options, last }, 'OPTIONS')
   let _url = null
   if (type === PaginationUrlType.First) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
@@ -27,10 +29,10 @@ export function formatResponseData(data: Array<Record<string, any>>, options?: R
   if (options.page) {
     _responseData = {
       ..._responseData,
-      first: paginationUrlReplacer(PaginationUrlType.First, data.length, options),
-      last: paginationUrlReplacer(PaginationUrlType.Last, data.length, options),
-      prev: paginationUrlReplacer(PaginationUrlType.Prev, data.length, options),
-      next: paginationUrlReplacer(PaginationUrlType.Next, data.length, options)
+      first: paginationUrlReplacer(PaginationUrlType.First, options),
+      last: paginationUrlReplacer(PaginationUrlType.Last, options),
+      prev: paginationUrlReplacer(PaginationUrlType.Prev, options),
+      next: paginationUrlReplacer(PaginationUrlType.Next, options)
     } as ResponseDataWithPagination
   }
   return _responseData

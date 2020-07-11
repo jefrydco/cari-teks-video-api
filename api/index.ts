@@ -45,7 +45,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       const paginated = paginate(formattedVtt, page)
       // logger.info({ paginated }, 'PAGINATED')
 
-      return res.send(formatResponseData(paginated, { page, url }))
+      return res.send(formatResponseData(paginated, {
+        page,
+        url,
+        dataLength: formattedVtt.length
+      }))
     }
 
     return res.send(formatResponseData(formattedVtt))

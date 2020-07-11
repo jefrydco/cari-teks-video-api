@@ -20,6 +20,7 @@ export type ResponseDataFormatterOptions = {
   url?: string
   page?: number
   size?: number
+  dataLength?: number
 }
 
 export type ResponseDataType = ResponseData | ResponseDataWithPagination
