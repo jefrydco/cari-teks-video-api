@@ -7,7 +7,11 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
   if (type === PaginationUrlType.First) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
   } else if (type === PaginationUrlType.Last) {
-    _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${last}`)
+    if (options.dataLength !== 0) {
+      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${last}`)
+    } else {
+      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
+    }
   } else if (type === PaginationUrlType.Prev) {
     if (options.dataLength !== 0 && options.page !== 1) {
       _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page - 1}`)
@@ -30,7 +34,8 @@ export function formatResponseData(data: Array<Record<string, any>>, options?: R
       first: paginationUrlReplacer(PaginationUrlType.First, options),
       last: paginationUrlReplacer(PaginationUrlType.Last, options),
       prev: paginationUrlReplacer(PaginationUrlType.Prev, options),
-      next: paginationUrlReplacer(PaginationUrlType.Next, options)
+      next: paginationUrlReplacer(PaginationUrlType.Next, options),
+      total: options.dataLength
     } as ResponseDataWithPagination
   }
   return _responseData
