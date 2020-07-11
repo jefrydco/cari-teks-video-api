@@ -21,16 +21,14 @@ export class ResponseData {
   }
 
   get() {
-    if (isExists(this.options.page)) {
-      return {
-        data: this.data,
-        ...this.options
-      }
-    }
-    return {
-      data: this.data,
+    let _options = {
+      ...this.data,
       ...this.options
     }
+    if (!isExists(this.options.page)) {
+      delete _options.page
+    }
+    return _options
   }
 }
 
