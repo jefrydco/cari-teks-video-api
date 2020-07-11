@@ -6,7 +6,7 @@ import { formatUrl } from '../utils/url'
 import { vttToJson } from '../utils/vtt'
 import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 import { indexQuery } from '../utils/validator'
-import { ResponseData } from '../utils/response'
+import { ResponseData, paginate } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
 
@@ -37,6 +37,12 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         text: stripWhitespaceNewLine(item.text)
       }))
     logger.info({ formattedVtt })
+
+    const page = parseInt(req.query.page as string)
+    if (page) {
+      const paginated = paginate(formattedVtt, page)
+      return res.send(new ResponseData(paginated, page))
+    }
 
     return res.send(new ResponseData(formattedVtt))
   } catch (error) {
