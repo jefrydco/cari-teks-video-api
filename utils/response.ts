@@ -9,11 +9,11 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
   } else if (type === PaginationUrlType.Last) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${last}`)
   } else if (type === PaginationUrlType.Prev) {
-    if (options.page !== 1) {
+    if (options.dataLength !== 0 && options.page !== 1) {
       _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page - 1}`)
     }
   } else if (type === PaginationUrlType.Next) {
-    if (options.page !== last) {
+    if (options.dataLength !== 0 && options.page !== last) {
       _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page + 1}`)
     }
   }
