@@ -20,7 +20,7 @@ export class ResponseData {
     }
   }
 
-  toString() {
+  toJSON() {
     if (isExists(this.options.page)) {
       return JSON.stringify({
         data: this.data,
