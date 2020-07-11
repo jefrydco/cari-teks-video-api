@@ -39,15 +39,15 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
-    logger.info({ page: req.query.page }, 'BEFORE_WOW')
-    const page = parseInt(req.query.page as string)
-    logger.info({ page }, 'WOW')
-    if (isExists(page)) {
-      logger.info({ page: isExists(page) }, 'HERE')
-      const paginated = paginate(formattedVtt, page)
-      return res.send(new ResponseData(paginated, { page }).get())
-    }
-    logger.info('THERE')
+    // logger.info({ page: req.query.page }, 'BEFORE_WOW')
+    // const page = parseInt(req.query.page as string)
+    // logger.info({ page }, 'WOW')
+    // if (isExists(page)) {
+    //   logger.info({ page: isExists(page) }, 'HERE')
+    //   const paginated = paginate(formattedVtt, page)
+    //   return res.send(new ResponseData(paginated, { page }).get())
+    // }
+    // logger.info('THERE')
 
     return res.send(new ResponseData(formattedVtt).get())
   } catch (error) {
