@@ -2,7 +2,7 @@ import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE)
+  const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
   let _url = null
   if (type === PaginationUrlType.First) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
