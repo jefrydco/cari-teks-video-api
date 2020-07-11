@@ -4,7 +4,10 @@ import { logger } from "./logger"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
   const last = options.dataLength / options.size
-  logger.info({ ...options, last })
+  Object.keys(options).forEach(item => {
+    logger.info(item)
+  })
+  logger.info(String(last))
   let _url = null
   if (type === PaginationUrlType.First) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
