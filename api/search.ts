@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import { getJson } from "../utils/fetch"
 import { fuzzySearch } from "../utils/search"
 import { searchQuery } from "../utils/validator"
-import { ResponseData } from "../utils/response"
+import { formatResponseData } from "../utils/response"
 import { logger } from "../utils/logger"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
@@ -21,7 +21,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const searchResult = fuzzySearch(formattedVtt, q)
     logger.info({ searchResult }, 'SEARCH_RESULT')
 
-    return res.send(new ResponseData(searchResult).get())
+    return res.send(formatResponseData(searchResult))
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())

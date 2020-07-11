@@ -2,34 +2,22 @@ import { DEFAULT_PAGINATION_SIZE } from "../constants"
 import { ResponseDataOptions } from "./types"
 import { isExists } from "./commons"
 
-export class ResponseData {
-  data: Record<string, any>
-  options: ResponseDataOptions
-
-  constructor(data: Record<string, any>, _options?: ResponseDataOptions) {
-    const defaultOptions: ResponseDataOptions = {
-      page: null,
-      code: 200,
-      status: 'success',
-      message: ''
-    }
-    this.data = data
-    this.options = {
-      ...defaultOptions,
-      ..._options
-    }
+export function formatResponseData(data: Record<string, any>, _options?: ResponseDataOptions) {
+  const defaultOptions: ResponseDataOptions = {
+    page: null,
+    code: 200,
+    status: 'success',
+    message: ''
   }
-
-  get() {
-    let _options = {
-      ...this.data,
-      ...this.options
-    }
-    if (!isExists(this.options.page)) {
-      delete _options.page
-    }
-    return _options
+  const response = {
+    data,
+    ...defaultOptions,
+    ..._options
   }
+  if (!isExists(response.page)) {
+    delete response.page
+  }
+  return response
 }
 
 // Taken from: https://stackoverflow.com/a/42761393

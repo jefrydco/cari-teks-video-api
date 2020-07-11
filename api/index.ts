@@ -6,7 +6,7 @@ import { formatUrl } from '../utils/url'
 import { vttToJson } from '../utils/vtt'
 import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 import { indexQuery } from '../utils/validator'
-import { ResponseData, paginate } from '../utils/response'
+import { paginate, formatResponseData } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
 import { isExists } from '../utils/commons'
@@ -44,10 +44,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       const paginated = paginate(formattedVtt, page)
       // logger.info({ paginated }, 'PAGINATED')
 
-      return res.send(new ResponseData(paginated, { page }).get())
+      return res.send(formatResponseData(paginated, { page }))
     }
 
-    return res.send(new ResponseData(formattedVtt).get())
+    return res.send(formatResponseData(formattedVtt))
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())
