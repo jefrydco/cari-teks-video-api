@@ -7,6 +7,7 @@ import { formatResponseData, paginate } from "../utils/response"
 import { logger } from "../utils/logger"
 import { isExists } from "../utils/commons"
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
+import { markText } from "../utils/string"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -20,8 +21,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
     logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
-    const searchResult = fuzzySearch(formattedVtt, q)
-    logger.info({ searchResult }, 'SEARCH_RESULT')
+    const marked = Boolean(req.query.marked) || true
+    const searchResult = fuzzySearch(formattedVtt, q, marked)
+    // logger.info({ searchResult }, 'SEARCH_RESULT')
 
     let page = parseInt(req.query.page as string) || 1
     let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
@@ -31,7 +33,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       reqUrl = `https://${req.headers.host}${req.url}`
     }
 
-    const paginated = paginate(searchResult, page, pageSize)
+    let paginated = paginate(searchResult, page, pageSize)
     // logger.info({ paginated }, 'PAGINATED')
 
     return res.send(formatResponseData(paginated, {
