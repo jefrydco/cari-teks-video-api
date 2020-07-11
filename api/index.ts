@@ -12,7 +12,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
   try {
     const { error } = indexQuery.validate(req.query)
     if (error) {
-      res.send(error)
+      res.json(error)
     }
 
     const url = req.query.url as string
@@ -25,9 +25,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         ...item,
         text: stripWhitespaceNewLine(item.text)
       }))
-    res.send(new ResponseData(formattedVtt))
+    res.json(new ResponseData(formattedVtt))
   } catch (error) {
     console.error(error)
-    res.send(Boom.internal())
+    res.json(Boom.internal())
   }
 }
