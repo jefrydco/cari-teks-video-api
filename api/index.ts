@@ -52,7 +52,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     return res.send(formatResponseData(paginated, {
       page,
-      url,
+      url: reqUrl,
       dataLength: formattedVtt.length
     }))
   } catch (error) {
