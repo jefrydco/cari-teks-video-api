@@ -21,9 +21,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const searchResult = fuzzySearch(formattedVtt, q)
     logger.info({ searchResult })
 
-    res.send(new ResponseData(searchResult))
+    return res.send(new ResponseData(searchResult))
   } catch (error) {
     logger.error(error)
-    res.send(Boom.internal())
+    return res.send(Boom.internal())
   }
 }

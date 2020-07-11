@@ -41,6 +41,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     return res.send(new ResponseData(formattedVtt))
   } catch (error) {
     logger.error(error)
-    res.send(Boom.internal())
+    return res.send(Boom.internal())
   }
 }
