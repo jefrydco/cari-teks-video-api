@@ -1,5 +1,6 @@
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
 import { ResponseDataOptions } from "./types"
+import { isExists } from "./commons"
 
 export class ResponseData {
   data: Record<string, any>
@@ -10,14 +11,14 @@ export class ResponseData {
 
   constructor(data: Record<string, any>, options?: ResponseDataOptions) {
     this.data = data
-    this.page = options.page
-    this.code = options.code || 200
-    this.status = options.status || 'success'
-    this.message = options.message || ''
+    this.page = options?.page ?? null
+    this.code = options?.code ?? 200
+    this.status = options?.status ?? 'success'
+    this.message = options?.message ?? ''
   }
 
   toString() {
-    if (this.page) {
+    if (isExists(this.page)) {
       return JSON.stringify({
         data: this.data,
         page: this.page,

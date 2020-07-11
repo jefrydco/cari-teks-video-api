@@ -9,6 +9,7 @@ import { indexQuery } from '../utils/validator'
 import { ResponseData, paginate } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
+import { isExists } from '../utils/commons'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -39,7 +40,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     logger.info({ formattedVtt })
 
     const page = parseInt(req.query.page as string)
-    if (page) {
+    if (isExists(page)) {
       const paginated = paginate(formattedVtt, page)
       return res.send(new ResponseData(paginated, { page }))
     }
