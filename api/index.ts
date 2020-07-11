@@ -6,6 +6,7 @@ import { formatUrl } from '../utils/url'
 import { vttToJson } from '../utils/vtt'
 import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 import { indexQuery } from '../utils/validator'
+import { ResponseData } from '../utils/response'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -24,7 +25,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         ...item,
         text: stripWhitespaceNewLine(item.text)
       }))
-    res.send({ formattedVtt })
+    res.send(new ResponseData(formattedVtt))
   } catch (error) {
     console.error(error)
     res.send(Boom.internal())
