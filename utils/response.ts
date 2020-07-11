@@ -4,34 +4,32 @@ import { isExists } from "./commons"
 
 export class ResponseData {
   data: Record<string, any>
-  page: number
-  code: number
-  status: string
-  message: string
+  options: ResponseDataOptions
 
-  constructor(data: Record<string, any>, options?: ResponseDataOptions) {
+  constructor(data: Record<string, any>, _options?: ResponseDataOptions) {
+    const defaultOptions: ResponseDataOptions = {
+      page: null,
+      code: 200,
+      status: 'success',
+      message: ''
+    }
     this.data = data
-    this.page = options?.page ?? null
-    this.code = options?.code ?? 200
-    this.status = options?.status ?? 'success'
-    this.message = options?.message ?? ''
+    this.options = {
+      ...defaultOptions,
+      ..._options
+    }
   }
 
   toString() {
-    if (isExists(this.page)) {
+    if (isExists(this.options.page)) {
       return JSON.stringify({
         data: this.data,
-        page: this.page,
-        code: this.code,
-        status: this.status,
-        message: this.message
+        ...this.options
       })
     }
     return JSON.stringify({
       data: this.data,
-      code: this.code,
-      status: this.status,
-      message: this.message
+      ...this.options
     })
   }
 }
