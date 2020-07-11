@@ -18,7 +18,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const searchResult = fuzzySearch(formattedVtt, q)
     res.json(new ResponseData(searchResult))
   } catch (error) {
-    console.error(error)
+    console.log(error)
     res.json(Boom.internal())
   }
 }

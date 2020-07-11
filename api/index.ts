@@ -27,7 +27,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     res.json(new ResponseData(formattedVtt))
   } catch (error) {
-    console.error(error)
+    console.log(error)
     res.json(Boom.internal())
   }
 }
