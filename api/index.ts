@@ -13,7 +13,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
   try {
     const { error } = indexQuery.validate(req.query)
     if (error) {
-      return res.send(Boom.badData(error.message, error))
+      return res.send(Boom.badRequest(error.message, error))
     }
 
     const url = req.query.url as string
