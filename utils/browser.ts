@@ -1,7 +1,7 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 
-export default async function getTimedText(url: string) {
+export async function getTimedText(url: string) {
   const browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,

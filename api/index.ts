@@ -1,8 +1,8 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import getTimedText from '../utils/browser'
+import { getTimedText } from '../utils/browser'
 import { getVTT } from '../utils/fetch'
-import formatUrl from '../utils/url'
-import vttToJson from '../utils/vtt'
+import { formatUrl } from '../utils/url'
+import { vttToJson } from '../utils/vtt'
 import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
