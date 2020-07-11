@@ -37,7 +37,7 @@ export function formatResponseData(data: Array<Record<string, any>>, options?: R
 }
 
 // Taken from: https://stackoverflow.com/a/42761393
-export function paginate(array: Array<Record<string, any>>, pageNumber: number, pageSize: number = DEFAULT_PAGINATION_SIZE,) {
+export function paginate(array: Array<Record<string, any>>, pageNumber: number, pageSize: number) {
   // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
 }

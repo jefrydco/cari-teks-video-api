@@ -10,6 +10,7 @@ import { paginate, formatResponseData } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
 import { isExists } from '../utils/commons'
+import { DEFAULT_PAGINATION_SIZE } from '../constants'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -37,23 +38,26 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         end: toSecond(item.end as number),
         text: stripWhitespaceNewLine(item.text)
       }))
+    logger.info({ length: formattedVtt.length })
+    logger.info({ divided: formattedVtt.length / DEFAULT_PAGINATION_SIZE })
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
-    let page = 1
+    let page = parseInt(req.query.page as string) || 1
     let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
+    let pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
 
     if (isExists(req.query.page as string)) {
-      page = parseInt(req.query.page as string)
       reqUrl = `https://${req.headers.host}${req.url}`
     }
 
-    const paginated = paginate(formattedVtt, page)
+    const paginated = paginate(formattedVtt, page, pageSize)
     // logger.info({ paginated }, 'PAGINATED')
 
     return res.send(formatResponseData(paginated, {
       page,
       url: reqUrl,
-      dataLength: formattedVtt.length
+      dataLength: formattedVtt.length,
+      size: pageSize
     }))
   } catch (error) {
     logger.error(error)
