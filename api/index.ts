@@ -18,8 +18,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       return res.send(Boom.badRequest(error.message, error))
     }
 
-    logger.info({ url: req.url })
-
     const url = req.query.url as string
     const formattedUrl = formatUrl(url)
     // logger.info({ formattedUrl }, 'FORMATTED_URL')

@@ -1,23 +1,39 @@
-import { DEFAULT_PAGINATION_SIZE } from "../constants"
-import { ResponseDataOptions } from "./types"
-import { isExists } from "./commons"
+import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
+import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
 
-export function formatResponseData(data: Record<string, any>, _options?: ResponseDataOptions) {
-  const defaultOptions: ResponseDataOptions = {
-    page: null,
-    code: 200,
-    status: 'success',
-    message: ''
+function paginationUrlReplacer(type: PaginationUrlType, dataLength: number, options: ResponseDataFormatterOptions): string | null {
+  const last = dataLength / options.size
+  let _url = null
+  if (type === PaginationUrlType.First) {
+    _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
+  } else if (type === PaginationUrlType.Last) {
+    _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${last}`)
+  } else if (type === PaginationUrlType.Prev) {
+    if (options.page !== 1) {
+      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page - 1}`)
+    }
+  } else if (type === PaginationUrlType.Next) {
+    if (options.page !== last) {
+      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page + 1}`)
+    }
   }
-  const response = {
-    data,
-    ...defaultOptions,
-    ..._options
+  return _url
+}
+
+export function formatResponseData(data: Array<Record<string, any>>, options?: ResponseDataFormatterOptions): ResponseDataType {
+  let _responseData: ResponseDataType = {
+    data
   }
-  if (!isExists(response.page)) {
-    delete response.page
+  if (options.page) {
+    _responseData = {
+      ..._responseData,
+      first: paginationUrlReplacer(PaginationUrlType.First, data.length, options),
+      last: paginationUrlReplacer(PaginationUrlType.Last, data.length, options),
+      prev: paginationUrlReplacer(PaginationUrlType.Prev, data.length, options),
+      next: paginationUrlReplacer(PaginationUrlType.Next, data.length, options)
+    } as ResponseDataWithPagination
   }
-  return response
+  return _responseData
 }
 
 // Taken from: https://stackoverflow.com/a/42761393
