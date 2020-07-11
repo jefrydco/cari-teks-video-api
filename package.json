@@ -13,6 +13,7 @@
     "@hapi/boom": "^9.1.0",
     "@hapi/joi": "^17.1.1",
     "@types/hapi__joi": "^17.1.4",
+    "@types/pino": "^6.3.0",
     "@types/puppeteer-core": "^2.0.0",
     "@types/string-strip-html": "^4.3.0",
     "@types/subtitle": "^2.0.2",
@@ -20,6 +21,8 @@
     "es6-promise": "^4.2.8",
     "fuse.js": "^6.4.0",
     "isomorphic-fetch": "^2.2.1",
+    "pino": "^6.3.2",
+    "pino-logflare": "^0.3.2",
     "puppeteer-core": "3.1.0",
     "string-strip-html": "^4.5.0",
     "subtitle": "^2.0.3"
