@@ -5,7 +5,7 @@ import { logger } from "./logger"
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
   const last = options.dataLength / options.size
   Object.keys(options).forEach(item => {
-    logger.info(item)
+    logger.info(options[item])
   })
   logger.info(String(last))
   let _url = null
