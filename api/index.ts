@@ -38,7 +38,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     return res.send(new ResponseData(formattedVtt))
   } catch (error) {
-    console.log(error)
+    logger.error(error)
     res.send(Boom.internal())
   }
 }
