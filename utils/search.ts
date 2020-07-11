@@ -26,7 +26,7 @@ function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>,
       obj[pathValue[i]] = value
   }
 
-  function generateHighlightedText(inputText: string, regions: number[] = []) {
+  function generateHighlightedText(inputText: string, regions: readonly Fuse.RangeTuple[] = []) {
     let content = ''
     let nextUnhighlightedRegionStartingIndex = 0
 
@@ -49,11 +49,11 @@ function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>,
   }
 
   return fuseSearchResult
-    .filter(({ matches }: any) => matches && matches.length)
-    .map(({ item, matches }: any) => {
+    .filter(({ matches }) => matches && matches.length)
+    .map(({ item, matches }) => {
       const highlightedItem = { ...item }
 
-      matches.forEach((match: any) => {
+      matches.forEach((match) => {
         set(highlightedItem, match.key, generateHighlightedText(match.value, match.indices))
       })
 
