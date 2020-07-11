@@ -4,6 +4,7 @@ import { getJson } from "../utils/fetch"
 import fuzzySearch from "../utils/fuzy"
 import { searchQuery } from "../utils/validator"
 import { ResponseData } from "../utils/response"
+import { logger } from "../utils/logger"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -15,6 +16,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const url = req.query.url as string
     const q = req.query.q as string
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
+    logger.info({ formattedVtt })
+
     return res.send(formattedVtt)
     const searchResult = fuzzySearch(formattedVtt, q)
     res.send(new ResponseData(searchResult))
