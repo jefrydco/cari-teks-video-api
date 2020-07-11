@@ -6,5 +6,6 @@ export const indexQuery = joi.object({
 })
 
 export const searchQuery = indexQuery.keys({
-  q: joi.string().min(3).required()
+  q: joi.string().min(3).required(),
+  mark: joi.boolean().optional()
 })
