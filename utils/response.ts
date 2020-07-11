@@ -3,11 +3,7 @@ import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPaginat
 import { logger } from "./logger"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = options.dataLength / options.size
-  Object.keys(options).forEach(item => {
-    logger.info(options[item])
-  })
-  logger.info(String(last))
+  const last = options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE)
   let _url = null
   if (type === PaginationUrlType.First) {
     _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
