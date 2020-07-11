@@ -41,10 +41,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     if (isExists(req.query.page as string)) {
       const page = parseInt(req.query.page as string)
+      const url = `https://${req.headers.host}${req.url}`
       const paginated = paginate(formattedVtt, page)
       // logger.info({ paginated }, 'PAGINATED')
 
-      return res.send(formatResponseData(paginated, { page }))
+      return res.send(formatResponseData(paginated, { page, url }))
     }
 
     return res.send(formatResponseData(formattedVtt))
