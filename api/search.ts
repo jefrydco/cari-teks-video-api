@@ -16,10 +16,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const url = req.query.url as string
     const q = req.query.q as string
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
-    logger.info('FORMATTED_VTT', formattedVtt)
+    logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const searchResult = fuzzySearch(formattedVtt, q)
-    logger.info('SEARCH_RESULT', searchResult)
+    logger.info({ searchResult }, 'SEARCH_RESULT')
 
     return res.send(new ResponseData(searchResult).get())
   } catch (error) {
