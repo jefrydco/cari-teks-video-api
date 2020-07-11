@@ -19,6 +19,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     logger.info({ formattedVtt })
 
     const searchResult = fuzzySearch(formattedVtt, q)
+    logger.info({ searchResult })
+
     res.send(new ResponseData(searchResult))
   } catch (error) {
     logger.error(error)
