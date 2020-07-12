@@ -33,6 +33,8 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
         ...parsedQueryString,
         page: `${options.page - 1}`
       }
+    } else {
+      return null
     }
   } else if (type === PaginationUrlType.Next) {
     if (options.dataLength !== 0 && options.page < last) {
@@ -40,6 +42,8 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
         ...parsedQueryString,
         page: `${options.page + 1}`
       }
+    } else {
+      return null
     }
   }
   return normalizeUrl(`${normalizedUrl}?${queryString.stringify(parsedQueryString)}`)
