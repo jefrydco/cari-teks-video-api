@@ -42,7 +42,7 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
       }
     }
   }
-  return `${normalizedUrl}?${queryString.stringify(parsedQueryString)}`
+  return normalizeUrl(`${normalizedUrl}?${queryString.stringify(parsedQueryString)}`)
 }
 
 export function formatResponseData(data: Array<Record<string, any>>, options?: ResponseDataFormatterOptions): ResponseDataType {
