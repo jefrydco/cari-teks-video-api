@@ -28,14 +28,14 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
       }
     }
   } else if (type === PaginationUrlType.Prev) {
-    if (options.dataLength !== 0 && options.page !== 1) {
+    if (options.dataLength !== 0 && options.page > 1) {
       parsedQueryString = {
         ...parsedQueryString,
         page: `${options.page - 1}`
       }
     }
   } else if (type === PaginationUrlType.Next) {
-    if (options.dataLength !== 0 && options.page !== last) {
+    if (options.dataLength !== 0 && options.page < last) {
       parsedQueryString = {
         ...parsedQueryString,
         page: `${options.page + 1}`
