@@ -8,6 +8,7 @@ import { formatResponseData, paginate } from "../utils/response"
 import { logger } from "../utils/logger"
 import { isExists } from "../utils/commons"
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
+import { getIndexUrl } from "../utils/url"
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -18,22 +19,17 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const url = req.query.url as string
     const q = req.query.q as string
-    const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
+    const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const marked = boolean(req.query.marked as string || 1)
     const searchResult = fuzzySearch(formattedVtt, q, marked)
     // logger.info({ searchResult }, 'SEARCH_RESULT')
 
-    let page = parseInt(req.query.page as string) || 1
-    let reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
-    let pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
-
-    if (isExists(req.query.page as string)) {
-      reqUrl = `https://${req.headers.host}${req.url}`
-    }
-
-    let paginated = paginate(searchResult, page, pageSize)
+    const page = parseInt(req.query.page as string) || 1
+    const reqUrl = `https://${req.headers.host}${req.url}`
+    const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
+    const paginated = paginate(searchResult, page, pageSize)
     // logger.info({ paginated }, 'PAGINATED')
 
     return res.send(formatResponseData(paginated, {

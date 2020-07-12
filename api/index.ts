@@ -40,10 +40,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       }))
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
-    let page = parseInt(req.query.page as string) || 1
-    let reqUrl = `https://${req.headers.host}${req.url}`
-    let pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
-
+    const page = parseInt(req.query.page as string) || 1
+    const reqUrl = `https://${req.headers.host}${req.url}`
+    const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
     const paginated = paginate(formattedVtt, page, pageSize)
     // logger.info({ paginated }, 'PAGINATED')
 
