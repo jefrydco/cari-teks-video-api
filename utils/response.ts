@@ -1,11 +1,14 @@
 import queryString from 'query-string'
+import normalizeUrl from 'normalize-url'
 import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
   const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
-  let parsedQueryString = queryString.parse(options.url)
-  const { origin } = new URL(options.url)
+  const normalizedUrl = normalizeUrl(options.url, {
+    removeQueryParameters: [/./]
+  })
+  let parsedQueryString = queryString.parse(options.url.replace(normalizedUrl, ''))
 
   if (type === PaginationUrlType.First) {
     parsedQueryString = {
@@ -39,7 +42,7 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
       }
     }
   }
-  return `${origin}?${queryString.stringify(parsedQueryString)}`
+  return `${normalizedUrl}?${queryString.stringify(parsedQueryString)}`
 }
 
 export function formatResponseData(data: Array<Record<string, any>>, options?: ResponseDataFormatterOptions): ResponseDataType {
