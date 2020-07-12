@@ -6,7 +6,6 @@ import { fuzzySearch } from "../utils/search"
 import { searchQuery } from "../utils/validator"
 import { formatResponseData, paginate } from "../utils/response"
 import { logger } from "../utils/logger"
-import { isExists } from "../utils/commons"
 import { DEFAULT_PAGINATION_SIZE } from "../constants"
 import { getIndexUrl } from "../utils/url"
 

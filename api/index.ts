@@ -9,7 +9,6 @@ import { indexQuery } from '../utils/validator'
 import { paginate, formatResponseData } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
-import { isExists } from '../utils/commons'
 import { DEFAULT_PAGINATION_SIZE } from '../constants'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
