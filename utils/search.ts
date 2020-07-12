@@ -12,6 +12,7 @@ export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked:
     return markText(fuse.search(q))
   }
   return fuse.search(q)
+    .map(({ item }) => item)
 }
 
 // Taken from: https://github.com/krisk/Fuse/issues/6#issuecomment-455813098
