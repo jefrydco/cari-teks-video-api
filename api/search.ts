@@ -18,10 +18,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const url = req.query.url as string
     const q = req.query.q as string
     const formattedVtt = await getJson(`https://${req.headers.host}/api?url=${url}`)
-    logger.info({ formattedVtt }, 'FORMATTED_VTT')
+    // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const marked = req.query.marked as string
-    return res.send(marked)
+    // return res.send(marked)
     // logger.info({ marked }, 'MARKED')
     const searchResult = fuzzySearch(formattedVtt, q, Boolean(marked))
     // logger.info({ searchResult }, 'SEARCH_RESULT')

@@ -1,6 +1,8 @@
 import Fuse from 'fuse.js'
+import { logger } from './logger'
 
 export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
+  logger.info({ marked })
   const fuse = new Fuse(list, {
     keys: ['text'],
     includeMatches: true,
