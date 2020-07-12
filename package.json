@@ -4,7 +4,10 @@
   "description": "API service for cari teks video",
   "main": "index.ts",
   "repository": "git@github.com:jefrydco/cari-teks-video-api.git",
-  "author": "@jefrydco",
+  "author": {
+    "name": "Jefry Dewangga",
+    "url": "https://jefrydco.id"
+  },
   "license": "MIT",
   "devDependencies": {
     "@vercel/node": "^1.7.1"
