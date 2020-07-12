@@ -1,27 +1,45 @@
+import queryString from 'query-string'
 import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType } from "./types"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
   const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
-  let _url = null
+  let parsedQueryString = queryString.parse(options.url)
+  const { origin } = new URL(options.url)
+
   if (type === PaginationUrlType.First) {
-    _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
+    parsedQueryString = {
+      ...parsedQueryString,
+      page: '1'
+    }
   } else if (type === PaginationUrlType.Last) {
     if (options.dataLength !== 0) {
-      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${last}`)
+      parsedQueryString = {
+        ...parsedQueryString,
+        page: `${last}`
+      }
     } else {
-      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, 'page=1')
+      parsedQueryString = {
+        ...parsedQueryString,
+        page: '1'
+      }
     }
   } else if (type === PaginationUrlType.Prev) {
     if (options.dataLength !== 0 && options.page !== 1) {
-      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page - 1}`)
+      parsedQueryString = {
+        ...parsedQueryString,
+        page: `${options.page - 1}`
+      }
     }
   } else if (type === PaginationUrlType.Next) {
     if (options.dataLength !== 0 && options.page !== last) {
-      _url = options.url.replace(PAGE_REPLACEMENT_REGEX, `page=${options.page + 1}`)
+      parsedQueryString = {
+        ...parsedQueryString,
+        page: `${options.page + 1}`
+      }
     }
   }
-  return _url
+  return `${origin}?${queryString.stringify(parsedQueryString)}`
 }
 
 export function formatResponseData(data: Array<Record<string, any>>, options?: ResponseDataFormatterOptions): ResponseDataType {

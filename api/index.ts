@@ -44,10 +44,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     let reqUrl = `https://${req.headers.host}${req.url}`
     let pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
 
-    if (!isExists(req.query.page as string)) {
-      reqUrl = `https://${req.headers.host}${req.url}?page=${page}`
-    }
-
     const paginated = paginate(formattedVtt, page, pageSize)
     // logger.info({ paginated }, 'PAGINATED')
 
