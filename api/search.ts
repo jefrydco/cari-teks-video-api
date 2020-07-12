@@ -21,8 +21,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const marked = req.query.marked as string
-    // return res.send(marked)
-    // logger.info({ marked }, 'MARKED')
     const searchResult = fuzzySearch(formattedVtt, q, Boolean(marked))
     // logger.info({ searchResult }, 'SEARCH_RESULT')
 
