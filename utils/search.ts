@@ -83,7 +83,7 @@ export async function flexSearch(list: Array<Record<string, any>>, q: string, ma
 function markTextForFlex(list: Array<Record<string, any>>, q: string) {
   const regex = new RegExp(`${q}`, 'gi')
   return list.map(item => ({
-    ...list,
+    ...item,
     text: `${item.text}`
       .replace(
         regex,
