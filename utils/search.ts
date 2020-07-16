@@ -25,7 +25,7 @@ function markTextForFlex(list: Vtt[], q: string, markedClass?: string) {
     text: `${item.text}`
       .replace(
         regex,
-        match => `<mark${markedClass ? ` class="${markedClass}"` : ''}>${match}</mark$>`
+        match => `<mark${markedClass ? ` class="${markedClass.split(',').join(' ')}"` : ''}>${match}</mark$>`
       )
   }))
 }
