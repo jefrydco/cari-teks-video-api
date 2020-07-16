@@ -4,9 +4,7 @@ import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType, Vtt } from "./types"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = (options.dataLength % options.size) === 0 ?
-    Math.floor(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE)) :
-    Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
+  const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
   const normalizedUrl = normalizeUrl(options.url, {
     removeQueryParameters: [/./]
   })
