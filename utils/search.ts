@@ -9,14 +9,14 @@ export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked:
     threshold: 0.7
   })
   if (marked) {
-    return markText(fuse.search(q))
+    return markTextForFuzzy(fuse.search(q))
   }
   return fuse.search(q)
     .map(({ item }) => item)
 }
 
 // Taken from: https://github.com/krisk/Fuse/issues/6#issuecomment-455813098
-function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>, highlightClassName: string = 'ctv-marked') {
+function markTextForFuzzy(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>, highlightClassName: string = 'ctv-marked') {
   function set(obj: Record<string, any>, path: string, value: string) {
       const pathValue = path.split('.')
       let i: number
@@ -63,7 +63,7 @@ function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>,
     })
 }
 
-export function flexSearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
+export async function flexSearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
   const index = Flexsearch.create<Record<string, any>>({
     doc: {
       id: 'id',
@@ -73,5 +73,21 @@ export function flexSearch(list: Array<Record<string, any>>, q: string, marked: 
     }
   })
   index.add(list)
-  return index.search(q)
+  const result = await index.search(q)
+  if (marked) {
+    return markTextForFlex(result, q)
+  }
+  return result
+}
+
+function markTextForFlex(list: Array<Record<string, any>>, q: string) {
+  const regex = new RegExp(`${q}`, 'gi')
+  return list.map(item => ({
+    ...list,
+    text: `${item.text}`
+      .replace(
+        regex,
+        match => `<mark class="cvt-highlight">${match}</mark>`
+      )
+  }))
 }
