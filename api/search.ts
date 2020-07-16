@@ -1,13 +1,14 @@
-import { NowRequest, NowResponse } from "@vercel/node"
+import { NowRequest, NowResponse } from '@vercel/node'
 import Boom from '@hapi/boom'
 import { boolean } from 'boolean'
-import { getJson } from "../utils/fetch"
-import { fuzzySearch } from "../utils/search"
-import { searchQuery } from "../utils/validator"
-import { formatResponseData, paginate } from "../utils/response"
-import { logger } from "../utils/logger"
-import { DEFAULT_PAGINATION_SIZE } from "../constants"
-import { getIndexUrl } from "../utils/url"
+import { formatResponseData, paginate } from '../utils/response'
+import { logger } from '../utils/logger'
+import { searchQuery } from '../utils/validator'
+import { getJson } from '../utils/fetch'
+import { getIndexUrl } from '../utils/url'
+import { generateId, removeId } from '../utils/array'
+import { flexSearch } from '../utils/search'
+import { DEFAULT_PAGINATION_SIZE } from '../constants'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -18,20 +19,18 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const url = req.query.url as string
     const q = req.query.q as string
-    const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
-    // logger.info({ formattedVtt }, 'FORMATTED_VTT')
-
     const marked = boolean(req.query.marked as string || 1)
-    const searchResult = fuzzySearch(formattedVtt, q, marked)
-    // logger.info({ searchResult }, 'SEARCH_RESULT')
-
     const page = parseInt(req.query.page as string) || 1
     const reqUrl = `https://${req.headers.host}${req.url}`
     const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
-    const paginated = paginate(searchResult, page, pageSize)
-    // logger.info({ paginated }, 'PAGINATED')
 
-    return res.send(formatResponseData(paginated, {
+    const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
+    const formattedVttWithId = generateId(formattedVtt)
+    const searchResult = await flexSearch(formattedVttWithId, q, marked)
+    const paginatedSearchResult = paginate(searchResult, page, pageSize)
+    const removedId = removeId(paginatedSearchResult)
+
+    return res.send(formatResponseData(removedId, {
       page,
       url: reqUrl,
       dataLength: searchResult.length,
