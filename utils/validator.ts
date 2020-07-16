@@ -9,5 +9,6 @@ export const indexQuery = joi.object({
 
 export const searchQuery = indexQuery.keys({
   q: joi.string().min(3).required(),
-  marked: joi.number().integer().allow(0, 1).optional()
+  marked: joi.number().integer().allow(0, 1).optional(),
+  markedClass: joi.string().optional()
 })
