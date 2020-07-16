@@ -10,7 +10,10 @@ export function formatUrl(url: string) {
 
 export function getIndexUrl(host: string, url: string) {
   return normalizeUrl(`${host}/api?${
-    queryString.stringify({ url })
+    queryString.stringify({
+      url,
+      paginated: '0'
+    })
   }`, {
     forceHttps: true
   })
