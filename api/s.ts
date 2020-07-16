@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import Boom from '@hapi/boom'
 import { boolean } from 'boolean'
-import { formatResponseData } from '../utils/response'
+import { formatResponseData, paginate } from '../utils/response'
 import { logger } from '../utils/logger'
 import { searchQuery } from '../utils/validator'
 import { getJson } from '../utils/fetch'
@@ -26,9 +26,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
     const formattedVttWithId = generateId(formattedVtt)
-    const searchResult = await flexSearch(formattedVttWithId, q)
+    const searchResult = await flexSearch(formattedVttWithId, q, marked)
+    const paginatedSearchResult = paginate(searchResult, page, pageSize)
 
-    return res.send(formatResponseData(searchResult, {
+    return res.send(formatResponseData(paginatedSearchResult, {
       page,
       url: reqUrl,
       dataLength: searchResult.length,
