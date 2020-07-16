@@ -3,7 +3,7 @@ import normalizeUrl from 'normalize-url'
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType, Vtt } from "./types"
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = options.page * options.size
+  const last = Math.ceil(options.dataLength / options.size)
   const normalizedUrl = normalizeUrl(options.url, {
     removeQueryParameters: [/./]
   })
