@@ -88,7 +88,7 @@ function markTextForFlex(list: Vtt[], q: string) {
     text: `${item.text}`
       .replace(
         regex,
-        match => `<mark class="cvt-highlight">${match}</mark>`
+        match => `<mark class="ctv-highlight">${match}</mark>`
       )
   }))
 }
