@@ -28,7 +28,12 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedVttWithId = generateId(formattedVtt)
     const searchResult = await flexSearch(formattedVttWithId, q)
 
-    return res.send(formatResponseData(searchResult))
+    return res.send(formatResponseData(searchResult, {
+      page,
+      url: reqUrl,
+      dataLength: searchResult.length,
+      size: pageSize
+    }))
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())
