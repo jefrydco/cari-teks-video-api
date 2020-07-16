@@ -1,16 +1,9 @@
 import queryString from 'query-string'
 import normalizeUrl from 'normalize-url'
-import { boolean } from 'boolean'
-import { DEFAULT_PAGINATION_SIZE } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType, Vtt } from "./types"
-import { logger } from './logger'
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = Math.ceil(options.dataLength / (boolean(options.size) ? options.size : DEFAULT_PAGINATION_SIZE))
-  logger.info({
-    last,
-    options
-  })
+  const last = options.page * options.size
   const normalizedUrl = normalizeUrl(options.url, {
     removeQueryParameters: [/./]
   })
