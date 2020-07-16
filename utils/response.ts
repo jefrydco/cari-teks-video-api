@@ -1,11 +1,12 @@
 import queryString from 'query-string'
 import normalizeUrl from 'normalize-url'
-import { DEFAULT_PAGINATION_SIZE, PAGE_REPLACEMENT_REGEX } from "../constants"
+import { boolean } from 'boolean'
+import { DEFAULT_PAGINATION_SIZE } from "../constants"
 import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType, Vtt } from "./types"
 import { logger } from './logger'
 
 function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
-  const last = Math.ceil(options.dataLength / (options.size = DEFAULT_PAGINATION_SIZE))
+  const last = Math.ceil(options.dataLength / (boolean(options.size) ? options.size : DEFAULT_PAGINATION_SIZE))
   logger.info({
     last,
     options
