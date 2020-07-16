@@ -1,4 +1,5 @@
 import Fuse from 'fuse.js'
+import Flexsearch from 'flexsearch'
 
 export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
   const fuse = new Fuse(list, {
@@ -60,4 +61,17 @@ function markText(fuseSearchResult: Array<Fuse.FuseResult<Record<string, any>>>,
 
       return highlightedItem
     })
+}
+
+export function flexSearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
+  const index = Flexsearch.create<Record<string, any>>({
+    doc: {
+      id: 'id',
+      field: [
+        'text'
+      ] 
+    }
+  })
+  index.add(list)
+  return index.search(q)
 }
