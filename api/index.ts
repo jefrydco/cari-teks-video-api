@@ -10,6 +10,7 @@ import { paginate, formatResponseData } from '../utils/response'
 import { logger } from '../utils/logger'
 import { toSecond } from '../utils/time'
 import { DEFAULT_PAGINATION_SIZE } from '../constants'
+import { boolean } from 'boolean'
 
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
@@ -37,16 +38,21 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         end: toSecond(item.end as number),
         text: stripWhitespaceNewLine(item.text)
       }))
+
+    const paginated = boolean(req.query.paginated as string || 1)
+    if (!paginated) {
+      return res.send({ data: formattedVtt })
+    }
     // return res.send({ data: formattedVtt })
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const page = parseInt(req.query.page as string) || 1
     const reqUrl = `https://${req.headers.host}${req.url}`
     const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
-    const paginated = paginate(formattedVtt, page, pageSize)
-    // logger.info({ paginated }, 'PAGINATED')
+    const paginatedFormattedVtt = paginate(formattedVtt, page, pageSize)
+    // logger.info({ paginatedFormattedVtt }, 'PAGINATED')
 
-    return res.send(formatResponseData(paginated, {
+    return res.send(formatResponseData(paginatedFormattedVtt, {
       page,
       url: reqUrl,
       dataLength: formattedVtt.length,
