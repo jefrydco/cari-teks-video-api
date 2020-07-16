@@ -6,7 +6,7 @@ export enum PaginationUrlType {
 }
 
 export type ResponseData = {
-  data: Array<Record<string, any>>
+  data: Vtt[]
 }
 
 export type ResponseDataWithPagination = ResponseData & {
@@ -25,3 +25,10 @@ export type ResponseDataFormatterOptions = {
 }
 
 export type ResponseDataType = ResponseData | ResponseDataWithPagination
+
+export type Vtt = {
+  id?: number
+  start: number
+  end: number
+  text: string
+}

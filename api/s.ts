@@ -6,7 +6,7 @@ import { logger } from '../utils/logger'
 import { searchQuery } from '../utils/validator'
 import { getJson } from '../utils/fetch'
 import { getIndexUrl } from '../utils/url'
-import { generateId } from '../utils/array'
+import { generateId, removeId } from '../utils/array'
 import { flexSearch } from '../utils/search'
 import { DEFAULT_PAGINATION_SIZE } from '../constants'
 
@@ -28,8 +28,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedVttWithId = generateId(formattedVtt)
     const searchResult = await flexSearch(formattedVttWithId, q, marked)
     const paginatedSearchResult = paginate(searchResult, page, pageSize)
+    const removedId = removeId(paginatedSearchResult)
 
-    return res.send(formatResponseData(paginatedSearchResult, {
+    return res.send(formatResponseData(removedId, {
       page,
       url: reqUrl,
       dataLength: searchResult.length,

@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js'
 import Flexsearch from 'flexsearch'
+import { Vtt } from './types'
 
 export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
   const fuse = new Fuse(list, {
@@ -9,10 +10,10 @@ export function fuzzySearch(list: Array<Record<string, any>>, q: string, marked:
     threshold: 0.7
   })
   if (marked) {
-    return markTextForFuzzy(fuse.search(q))
+    return markTextForFuzzy(fuse.search(q)) as Vtt[]
   }
   return fuse.search(q)
-    .map(({ item }) => item)
+    .map(({ item }) => item) as Vtt[]
 }
 
 // Taken from: https://github.com/krisk/Fuse/issues/6#issuecomment-455813098
@@ -63,7 +64,7 @@ function markTextForFuzzy(fuseSearchResult: Array<Fuse.FuseResult<Record<string,
     })
 }
 
-export async function flexSearch(list: Array<Record<string, any>>, q: string, marked: boolean = true) {
+export async function flexSearch(list: Vtt[], q: string, marked: boolean = true) {
   const index = Flexsearch.create<Record<string, any>>({
     doc: {
       id: 'id',
@@ -75,12 +76,12 @@ export async function flexSearch(list: Array<Record<string, any>>, q: string, ma
   index.add(list)
   const result = await index.search(q)
   if (marked) {
-    return markTextForFlex(result, q)
+    return markTextForFlex(result as Vtt[], q)
   }
-  return result
+  return result as Vtt[]
 }
 
-function markTextForFlex(list: Array<Record<string, any>>, q: string) {
+function markTextForFlex(list: Vtt[], q: string) {
   const regex = new RegExp(`${q}`, 'gi')
   return list.map(item => ({
     ...item,
