@@ -15,6 +15,7 @@ export type ResponseDataWithPagination = ResponseData & {
   prev: string
   next: string
   total: number
+  current: number
 }
 
 export type ResponseDataFormatterOptions = {

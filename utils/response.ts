@@ -59,7 +59,8 @@ export function formatResponseData(data: Vtt[], options?: ResponseDataFormatterO
       last: paginationUrlReplacer(PaginationUrlType.Last, options),
       prev: paginationUrlReplacer(PaginationUrlType.Prev, options),
       next: paginationUrlReplacer(PaginationUrlType.Next, options),
-      total: options.dataLength
+      total: options.dataLength,
+      current: options.page
     } as ResponseDataWithPagination
   }
   return _responseData
