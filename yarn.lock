@@ -118,10 +118,10 @@
   dependencies:
     "@types/node" "*"
 
-"@vercel/node@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.7.1.tgz#cdf9b2226cbc469228aae6369b2b21db4c83dc69"
-  integrity sha512-Lp6l3526xQ/srCqkXE9/E+gykAcpM/vut4zFo5NA9+syGxZt1nlVAznhNVkgsSW4mbRIE67KIfi7SII55dW7uw==
+"@vercel/node@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@vercel/node/-/node-1.7.2.tgz#85cb8aac661c02dfef6fe752740f5b162e90767b"
+  integrity sha512-XV5lrLC+K/cxsaFj8H2OoGu1zliOqnxcrOnPInI8HmQjR/Tztt+0nzgpt+7sx8wXcrib0Nu7lK303jP7VjSETw==
   dependencies:
     "@types/node" "*"
     ts-node "8.9.1"
@@ -366,11 +366,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-fuse.js@^6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.4.0.tgz#a8db8b1c301cdb313f2ebb6812b31aa7dc2a6a14"
-  integrity sha512-MagWS1i3kj58BgF9xymo+n2ZiSs9MoyVfxkCcr11+mzMpNEyTDyLtbU3DyrVjHsy0Gkjf58FH1n+TaihylFcIA==
-
 get-stream@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-5.1.0.tgz#01203cdc92597f9b909067c3e656cc1f4d3c4dc9"
@@ -468,10 +463,10 @@ lodash@^4.17.15:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
-logflare-transport-core@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/logflare-transport-core/-/logflare-transport-core-0.2.3.tgz#fb50a97ae71e836ae7674d8cc7e3faa54e3d86a0"
-  integrity sha512-1oiJN2/Khc3Jodwx5u7zX+J5KG8L2rjnqI+90+FV67ozk+t/aV9ju3BBHSjJB8zmP2fHBBPrYTQuS1QiaRMOFg==
+logflare-transport-core@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/logflare-transport-core/-/logflare-transport-core-0.2.4.tgz#50f9ee78ceff9fbf6958aaed3bde44ac33482d09"
+  integrity sha512-Cy4QMzFMIB4dbCvxkhRE8mckMafGMVth6QWuQ+BE1YceLrj02wGn5y8DmtjT3eypY0zaRmXUr44KoLCLz0lheA==
   dependencies:
     "@types/lodash" "^4.14.153"
     axios "^0.19.2"
@@ -542,17 +537,17 @@ pend@~1.2.0:
   resolved "https://registry.yarnpkg.com/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
   integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
 
-pino-logflare@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/pino-logflare/-/pino-logflare-0.3.2.tgz#c23e32c2669957ce2c4b9a5888b19fd86437601e"
-  integrity sha512-UGXEW6Vcl56hycUHA6MN6PdhlOzdTHL2+XvMVFU2+QPK5I7VCfK0TedbQqT2deOGWxa3SsuysxboiTfM6PDlGg==
+pino-logflare@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/pino-logflare/-/pino-logflare-0.3.4.tgz#f191ca48de6192bf2119fbb321474193c10952fb"
+  integrity sha512-1HUGlR/yZUDSu1kpzSrSWLLbfetOMk8Kk22+D3Gkl8xDStMN5TiPMgUwGQqU8Sqkj00QJslTFhRr/mHHXOs1vw==
   dependencies:
     axios "^0.19.2"
     batch2 "^1.0.6"
     commander "^5.0.0"
     fast-json-parse "^1.0.3"
     lodash "^4.17.15"
-    logflare-transport-core "^0.2.3"
+    logflare-transport-core "^0.2.4"
     pino "^6.3.2"
     pumpify "^2.0.1"
     split2 "^3.1.1"
@@ -568,6 +563,18 @@ pino@^6.3.2:
   version "6.3.2"
   resolved "https://registry.yarnpkg.com/pino/-/pino-6.3.2.tgz#55f73aa61584774ca5984068ffb78e8d519ce19e"
   integrity sha512-EiP3L1hoFw19KPocWimjnfXeysld0ne89ZRQ+bf8nAeA2TyuLoggNlibAi+Kla67GvQBopLdIZOsh1z/Lruo5Q==
+  dependencies:
+    fast-redact "^2.0.0"
+    fast-safe-stringify "^2.0.7"
+    flatstr "^1.0.12"
+    pino-std-serializers "^2.4.2"
+    quick-format-unescaped "^4.0.1"
+    sonic-boom "^1.0.0"
+
+pino@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-6.4.0.tgz#ec52f037607c144774565939e0c04bf16f6cdf94"
+  integrity sha512-TRDp5fJKRBtVlxd4CTox3rJL+TzwQztB/VNmT5n87zFgKVU7ztnmZkcX1zypPP+3ZZcveOTYKJy74UXdVBaXFQ==
   dependencies:
     fast-redact "^2.0.0"
     fast-safe-stringify "^2.0.7"
