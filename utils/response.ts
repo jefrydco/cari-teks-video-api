@@ -60,7 +60,7 @@ export function formatResponseData(data: Vtt[], options?: ResponseDataFormatterO
       prev: paginationUrlReplacer(PaginationUrlType.Prev, options),
       next: paginationUrlReplacer(PaginationUrlType.Next, options),
       total: options.dataLength,
-      current: options.page
+      page: options.page
     } as ResponseDataWithPagination
   }
   return _responseData
