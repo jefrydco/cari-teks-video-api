@@ -23,10 +23,15 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const page = parseInt(req.query.page as string) || 1
     const reqUrl = `https://${req.headers.host}${req.url}`
     const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
+    const paginated = boolean(req.query.paginated as string || 1)
 
     const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
     const formattedVttWithId = generateId(formattedVtt)
     const searchResult = await flexSearch(formattedVttWithId, q, marked)
+    if (!paginated) {
+      return res.send({ data: searchResult })
+    }
+
     const paginatedSearchResult = paginate(searchResult, page, pageSize)
     const removedId = removeId(paginatedSearchResult)
 
