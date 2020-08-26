@@ -18,7 +18,7 @@
     "@types/joi": "^14.3.4",
     "@types/pino": "^6.3.0",
     "@types/puppeteer-core": "^2.0.0",
-    "@types/string-strip-html": "^4.3.0",
+    "@types/string-strip-html": "^5.0.0",
     "@types/subtitle": "^2.0.2",
     "boolean": "^3.0.1",
     "chrome-aws-lambda": "3.1.1",
@@ -30,7 +30,7 @@
     "pino-logflare": "^0.3.5",
     "puppeteer-core": "5.2.1",
     "query-string": "^6.13.1",
-    "string-strip-html": "^4.5.0",
+    "string-strip-html": "^5.0.0",
     "subtitle": "^2.0.3"
   }
 }

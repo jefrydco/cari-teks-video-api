@@ -101,10 +101,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/string-strip-html@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.npmjs.org/@types/string-strip-html/-/string-strip-html-4.3.0.tgz#4f16aef4338904a2b1910f13104c66521a49cc75"
-  integrity sha512-DOr+qtsT4gU8brGg85MI6nHOrfFipLsjX/FtrSL8hxJSpkEgJYAEtq/xu06z/XIoBhJScvk8lnVYJdWFpuyRFw==
+"@types/string-strip-html@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/string-strip-html/-/string-strip-html-5.0.0.tgz#96c4052d07e14e700b898dd4edc3d7ea79d34b28"
+  integrity sha512-+mdBIb+pxJ9SLwtjc2DgolMm8U7CG6qBdCevkjSsFB7ehJ0EExFd2ltKQ6m9CoKitqXwe6Tx5h+fAcklGQD0Bw==
 
 "@types/subtitle@^2.0.2":
   version "2.0.2"
@@ -681,33 +681,33 @@ quick-format-unescaped@^4.0.1:
   resolved "https://registry.npmjs.org/quick-format-unescaped/-/quick-format-unescaped-4.0.1.tgz#437a5ea1a0b61deb7605f8ab6a8fd3858dbeb701"
   integrity sha512-RyYpQ6Q5/drsJyOhrWHYMWTedvjTIat+FTwv0K4yoUxzvekw2aRHMQJLlnvt8UantkZg2++bEzD9EdxXqkWf4A==
 
-ranges-apply@^3.1.10:
-  version "3.1.10"
-  resolved "https://registry.npmjs.org/ranges-apply/-/ranges-apply-3.1.10.tgz#4724ca7f52f321ca5b54e80ed2e27c07f43b0da8"
-  integrity sha512-NghBn6pIJG9hUXSmuTrRA8De4A1f1w5xhUznUOkvXNWibM94H3iZt8/C0TUTwjfGKfGpccrPE6pHgUBRArm9bQ==
+ranges-apply@^3.1.12:
+  version "3.1.12"
+  resolved "https://registry.yarnpkg.com/ranges-apply/-/ranges-apply-3.1.12.tgz#760bc606a662479b7d09be41d083c9ab3c2cfa4b"
+  integrity sha512-ojbyox6L2N165vXf6ml8+Q8bfqIezsQAURf9dIdTskre4yvcYerxA8IIK/c+AVpcc/pLP+4ZCD9kupUCgK/K1w==
   dependencies:
-    ranges-merge "^4.3.8"
+    ranges-merge "^4.3.10"
 
-ranges-merge@^4.3.8:
-  version "4.3.8"
-  resolved "https://registry.npmjs.org/ranges-merge/-/ranges-merge-4.3.8.tgz#e83de156fcfffaff5696a5c217237256378390f1"
-  integrity sha512-6YjdL2lvv6mO2tjDTCoDbCowHawzGLEYXaMwDrs3bV2CWtXcTIVuDTtcYZO3EHR4AmUgN6wXuQsjOtV+PsOWQQ==
+ranges-merge@^4.3.10:
+  version "4.3.10"
+  resolved "https://registry.yarnpkg.com/ranges-merge/-/ranges-merge-4.3.10.tgz#7616ef468807d1250addd3cbba070e835885ea2a"
+  integrity sha512-KK38l5CvC/CczjdT0smWu88cbspyNwnNRm6wOJTSXCU2e8tScOOoaZuw0PrnbS/K7IkzjuOjNmLa5xCsrWEA3Q==
   dependencies:
-    ranges-sort "^3.12.0"
+    ranges-sort "^3.12.2"
 
-ranges-push@^3.7.14:
-  version "3.7.14"
-  resolved "https://registry.npmjs.org/ranges-push/-/ranges-push-3.7.14.tgz#3bb07b89adce89061e0a9a497b4cfccd40e55d93"
-  integrity sha512-vkzQVK/R3NFTJjzwz8yY0yvUcMgPu+NQyFOsCs7zkxxnvRLuumGugjWMmj+6i9BUkMPNHnw2UAFjOebjNfO7Rw==
+ranges-push@^3.7.17:
+  version "3.7.17"
+  resolved "https://registry.yarnpkg.com/ranges-push/-/ranges-push-3.7.17.tgz#0b5b69777e684d99c1475016b863e37457267737"
+  integrity sha512-sN/hbdGf8gKY+bsG/Gtbb9JRvwvR4JZEyfD3sIyY8f+gEUwq6gH4Kj3E+UP67daraTw74cs3SZXs0TfobdPh/Q==
   dependencies:
-    ranges-merge "^4.3.8"
-    string-collapse-leading-whitespace "^2.0.20"
-    string-trim-spaces-only "^2.8.17"
+    ranges-merge "^4.3.10"
+    string-collapse-leading-whitespace "^2.0.23"
+    string-trim-spaces-only "^2.8.19"
 
-ranges-sort@^3.12.0:
-  version "3.12.0"
-  resolved "https://registry.npmjs.org/ranges-sort/-/ranges-sort-3.12.0.tgz#411f40c648ba4e274561d00786a9bf764ae71f41"
-  integrity sha512-YCFqRd1Bxh5vKyItPtQDXMsbPSsDD33/pI9O7z2Dy2nyOyfGxT969KxMuVvr6/iDWB3hPOd8fhUE85Aw6dX7Cg==
+ranges-sort@^3.12.2:
+  version "3.12.2"
+  resolved "https://registry.yarnpkg.com/ranges-sort/-/ranges-sort-3.12.2.tgz#53576d5a04e842d8bd47c191fdab7a09d8d12bc9"
+  integrity sha512-220iIZ+1IFO+GnuoTqJ4PN7Re5eKpw3eY/zFEsJUw9grmtmHKdBkuSogJ3c6rpKT6sTg01E9Ay76deTGmmgQ4A==
 
 "readable-stream@2 || 3", readable-stream@^3.0.0, readable-stream@^3.1.1, readable-stream@^3.4.0:
   version "3.6.0"
@@ -785,36 +785,36 @@ strict-uri-encode@^2.0.0:
   resolved "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
   integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
-string-collapse-leading-whitespace@^2.0.20:
-  version "2.0.20"
-  resolved "https://registry.npmjs.org/string-collapse-leading-whitespace/-/string-collapse-leading-whitespace-2.0.20.tgz#60f2ed3b8ae39d3391d370fbef9effcddf0494be"
-  integrity sha512-NsDj7efJ4QC0l9SjZYzC1HdS9UEyaMdM5NUjNlFwxxoi3T6Ns05RqZRUlFQ5bKDRQW6F8Ws9ZkuWLL03q5OLgg==
+string-collapse-leading-whitespace@^2.0.23:
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/string-collapse-leading-whitespace/-/string-collapse-leading-whitespace-2.0.23.tgz#3352ec94bc2ae956de20d5a31f200a2758d9e037"
+  integrity sha512-ZtJmaD29PtvlIzydIgJtahEb+plHgGcZrTDWR1+eFmYdCUdYDTGg44P5GR0yYXcfERFSe6PjydA1P5DLg7r1lw==
 
-string-left-right@^2.3.24:
-  version "2.3.24"
-  resolved "https://registry.npmjs.org/string-left-right/-/string-left-right-2.3.24.tgz#b7a28f8af55ae38c4fbb8c3ee30782478cae645a"
-  integrity sha512-aJLgeCb5ourwPp5q7N40C8C+WqOHpGY/1iiAYRKJRUylHu95aWRBM0aZZackaLqJhvj1hhHXk16If4WxE+zveA==
+string-left-right@^2.3.27:
+  version "2.3.27"
+  resolved "https://registry.yarnpkg.com/string-left-right/-/string-left-right-2.3.27.tgz#a77272d7cc1805b6fe2287df4d0a62381f3b1c5c"
+  integrity sha512-uZSy9ncuQBClZliwIqihz9Svf2MO0KRMZT9OsL8ONts93O1zpRlaxH7VbiQ//PdPY9mwp79s3XQDV62bhXcKyw==
   dependencies:
     lodash.clonedeep "^4.5.0"
     lodash.isplainobject "^4.0.6"
 
-string-strip-html@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/string-strip-html/-/string-strip-html-4.5.0.tgz#7b28ca041bb93e8ade5dfa548bf7157384ae0952"
-  integrity sha512-0jwKk4p8IjK6vpL6cPIpiKsYRLai57SnQSpr0rvlOtDOURyu1Xf7mgzualQkj1+6h+46xzXMDhz3mcn7E114lA==
+string-strip-html@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-5.0.1.tgz#6544b55fdc92d616d34d77b0298047bbe8f247ab"
+  integrity sha512-Kk8eTun48/sK8CDehxvwBDNrQZXz83LxU+oDnUGQ0DbUr2SPrBFZ60gW8LblESEsWIe6pEV3yP//t+v1+aJa/g==
   dependencies:
     ent "^2.2.0"
     lodash.isplainobject "^4.0.6"
     lodash.trim "^4.5.1"
     lodash.without "^4.4.0"
-    ranges-apply "^3.1.10"
-    ranges-push "^3.7.14"
-    string-left-right "^2.3.24"
+    ranges-apply "^3.1.12"
+    ranges-push "^3.7.17"
+    string-left-right "^2.3.27"
 
-string-trim-spaces-only@^2.8.17:
-  version "2.8.17"
-  resolved "https://registry.npmjs.org/string-trim-spaces-only/-/string-trim-spaces-only-2.8.17.tgz#2fdc062ce3825ac8adad9902dd15527b19ab69e6"
-  integrity sha512-IAjwhcVS2AMD93GPGl8ONQmtDqcdmsvgHekVafQ/p389CGlp8VkCpOdUGsRW1OunzaVyzZzFesoKCju8fbA8Lw==
+string-trim-spaces-only@^2.8.19:
+  version "2.8.19"
+  resolved "https://registry.yarnpkg.com/string-trim-spaces-only/-/string-trim-spaces-only-2.8.19.tgz#e97456887935785ba8214ea3d86f1e6bb86f2786"
+  integrity sha512-jDg0UczZV6hkqPI60y0ODeZ5vPypUp1C/wPbJZ9sNQ0wxSA7wTBaSM2FtWak2SFVx4fMgcx3mjkO1y19i9paeQ==
 
 string_decoder@^1.1.1:
   version "1.3.0"
