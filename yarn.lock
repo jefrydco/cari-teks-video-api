@@ -823,12 +823,10 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-subtitle@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/subtitle/-/subtitle-2.0.3.tgz#1fed16180273e60dc4be320ecc8ec2f90a51a28d"
-  integrity sha512-NAQVYcWOGky/zEv37EGaTk6VK3WmD3m9JGILLcoh2YTAnXTcVhvNilAWPcqVKtWhmi3zYOBLSGa+3ufetLFrsA==
-  dependencies:
-    zero-fill "^2.2.3"
+subtitle@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/subtitle/-/subtitle-3.0.0.tgz#816b8c0c70331eb2e73c64c159eb2caf634f4457"
+  integrity sha512-/0f9ba9aQ6TtjTLqyjdhE0GfGgayVQRpAye6Cx9p9yDBK3wUNDfMJSNYN0xBquosKyDpKrRRnVm23hjIQM2czg==
 
 tar-fs@^2.0.0:
   version "2.1.0"
@@ -920,8 +918,3 @@ yn@3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
-
-zero-fill@^2.2.3:
-  version "2.2.4"
-  resolved "https://registry.npmjs.org/zero-fill/-/zero-fill-2.2.4.tgz#b041320973dbcb03cd90193270ac8d4a3da05fc1"
-  integrity sha512-/N5GEDauLHz2uGnuJXWO1Wfib4EC+q4yp9C1jojM7RubwEKADqIqMcYpETMm1lRop403fi3v1qTOdgDE8DIOdw==

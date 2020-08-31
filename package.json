@@ -31,6 +31,6 @@
     "puppeteer-core": "5.2.1",
     "query-string": "^6.13.1",
     "string-strip-html": "^4.5.0",
-    "subtitle": "^2.0.3"
+    "subtitle": "^3.0.0"
   }
 }
