@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://github.com/jefrydco/cari-teks-video-api",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
