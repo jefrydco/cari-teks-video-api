@@ -35,11 +35,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ strippedVtt }, 'STRIPPED_VTT')
 
     const formattedVtt = vttToJson(strippedVtt)
-      .map(item => ({
-        start: toSecond((item as NodeCue).data.start),
-        end: toSecond((item as NodeCue).data.end),
-        text: stripWhitespaceNewLine((item as NodeCue).data.text)
-      }))
+      // .map(item => ({
+      //   start: toSecond((item as NodeCue).data.start),
+      //   end: toSecond((item as NodeCue).data.end),
+      //   text: stripWhitespaceNewLine((item as NodeCue).data.text)
+      // }))
 
     const paginated = boolean(req.query.paginated as string || 1)
     if (!paginated) {
