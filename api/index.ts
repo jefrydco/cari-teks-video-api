@@ -29,7 +29,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
     const vtt = await getVTT(timedTextUrl)
-    // logger.info({ vtt }, 'VTT')
+    logger.info({ vtt }, 'VTT')
 
     const strippedVtt = stripHtml(vtt)
     // logger.info({ strippedVtt }, 'STRIPPED_VTT')
