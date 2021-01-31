@@ -63,9 +63,9 @@ Each item in data containing:
 
 ### Example
 
-```
+```shell
 curl -XPOST 'https://cari-teks-video-api.vercel.app/api/search?url=https://www.youtube.com/watch?v=klnvttPfOUM&q=web'
-
+# Response
 {
   "data": [
     {
