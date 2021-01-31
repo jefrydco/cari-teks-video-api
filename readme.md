@@ -41,15 +41,15 @@ Query Params:
 
 ### Response
 
-| Key   | Data Type   | Example Value                                                                                                                        | Description                                                           |
-|-------|-------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| data  | Array<item> | [{start: 1000, end: 1200, text: “lorem ipsum”}]                                                                                      | Search result                                                         |
-| first | String      | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to first page                                                     |
-| last  | String      | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=23&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM | URL to last page                                                      |
-| prev  | String      | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to prev page. If the value is null, it doesn't have previous page |
-| next  | String      | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=3&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to next page. If the value is null, it doesn't have next page     |
-| total | Number      | 229                                                                                                                                  | Search result total item                                              |
-| page  | Number      | 2                                                                                                                                    | Current result page                                                   |
+| Key   | Data Type          | Example Value                                                                                                                        | Description                                                           |
+|-------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| data  | Array<item>        | [{start: 1000, end: 1200, text: “lorem ipsum”}]                                                                                      | Search result                                                         |
+| first | String             | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to first page                                                     |
+| last  | String             | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=23&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM | URL to last page                                                      |
+| prev  | String &vert; null | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to prev page. If the value is null, it doesn't have previous page |
+| next  | String &vert; null | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=3&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to next page. If the value is null, it doesn't have next page     |
+| total | Number             | 229                                                                                                                                  | Search result total item                                              |
+| page  | Number             | 2                                                                                                                                    | Current result page                                                   |
 
 
 Each item in data containing:
