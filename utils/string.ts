@@ -1,7 +1,7 @@
-import stripHTML from 'string-strip-html'
+import { stripHtml as strip } from 'string-strip-html'
 
 export function stripHtml(string: string) {
-  return stripHTML(string)
+  return strip(string).result
     .replace(/(<([^>]+)>)/ig, '')
 }
 

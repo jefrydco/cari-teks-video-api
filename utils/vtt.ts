@@ -1,5 +1,5 @@
-import { parse } from 'subtitle'
+import { parseSync } from 'subtitle'
 
 export function vttToJson(vtt: string) {
-  return parse(vtt)
+  return parseSync(vtt)
 }
