@@ -26,6 +26,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const paginated = boolean(req.query.paginated as string || 1)
 
     const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
+    logger.info(formattedVtt)
     const formattedVttWithId = generateId(formattedVtt)
     const searchResult = await flexSearch(formattedVttWithId, q, marked)
     if (!paginated) {
