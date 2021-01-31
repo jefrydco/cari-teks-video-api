@@ -12,6 +12,8 @@ import { toSecond } from '../utils/time'
 import { DEFAULT_PAGINATION_SIZE } from '../constants'
 import { boolean } from 'boolean'
 
+import type { NodeCue } from 'subtitle'
+
 export default async function handler(req: NowRequest, res: NowResponse) {
   try {
     const { error } = indexQuery.validate(req.query)
@@ -34,9 +36,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const formattedVtt = vttToJson(strippedVtt)
       .map(item => ({
-        start: toSecond(item.start as number),
-        end: toSecond(item.end as number),
-        text: stripWhitespaceNewLine(item.text)
+        start: toSecond((item as NodeCue).data.start),
+        end: toSecond((item as NodeCue).data.end),
+        text: stripWhitespaceNewLine((item as NodeCue).data.text)
       }))
 
     const paginated = boolean(req.query.paginated as string || 1)
