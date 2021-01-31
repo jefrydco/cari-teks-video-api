@@ -33,6 +33,7 @@
     "puppeteer-core": "5.5.0",
     "query-string": "^6.13.8",
     "string-strip-html": "^8.1.0",
-    "subtitle": "^4.0.1"
+    "subtitle": "^4.0.1",
+    "typescript": "^4.1.3"
   }
 }
