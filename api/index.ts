@@ -39,7 +39,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       .map(item => ({
         start: toSecond((item as NodeCue).data.start || 0),
         end: toSecond((item as NodeCue).data.end || 0),
-        text: stripWhitespaceNewLine((item as NodeCue).data.text || '')
+        text: stripWhitespaceNewLine((item as NodeCue).data.text)
       }))
 
     const paginated = boolean(req.query.paginated as string || 1)
