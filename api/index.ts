@@ -29,12 +29,12 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
     const vtt = await getVTT(timedTextUrl)
-    logger.info({ vtt }, 'VTT')
+    // logger.info({ vtt }, 'VTT')
 
-    // const strippedVtt = stripHtml(vtt)
+    const strippedVtt = stripHtml(vtt)
     // logger.info({ strippedVtt }, 'STRIPPED_VTT')
 
-    const formattedVtt = vttToJson(vtt)
+    const formattedVtt = vttToJson(strippedVtt)
       .map(item => ({
         start: toSecond((item as NodeCue).data.start),
         end: toSecond((item as NodeCue).data.end),
