@@ -1,3 +1,10 @@
+export type Vtt = {
+  id?: number
+  start: number
+  end: number
+  text: string
+}
+
 export enum PaginationUrlType {
   First,
   Last,
@@ -35,13 +42,6 @@ export type ResponseDataFormatterOptions = {
 }
 
 export type ResponseDataType = ResponseData | ResponseDataWithPagination
-
-export type Vtt = {
-  id?: number
-  start: number
-  end: number
-  text: string
-}
 
 export type VttWithMeta = {
   data: Vtt[]
