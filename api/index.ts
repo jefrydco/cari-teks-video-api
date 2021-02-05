@@ -25,10 +25,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedUrl = formatUrl(url)
     // logger.info({ formattedUrl }, 'FORMATTED_URL')
 
-    const timedTextUrl = await getTimedText(formattedUrl)
+    const { timedText, meta } = await getTimedText(formattedUrl)
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
-    const vtt = await getVTT(timedTextUrl)
+    const vtt = await getVTT(timedText)
     // logger.info({ vtt }, 'VTT')
 
     const strippedVtt = stripHtml(vtt)
@@ -36,31 +36,35 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const formattedVtt = vttToJson(strippedVtt)
       .filter((item) => item.type === 'cue')
-      .map(item => ({
+      .map((item) => ({
         start: toSecond((item as NodeCue).data.start || 0),
         end: toSecond((item as NodeCue).data.end || 0),
         text: stripWhitespaceNewLine((item as NodeCue).data.text)
       }))
 
-    const paginated = boolean(req.query.paginated as string || 1)
+    const paginated = boolean((req.query.paginated as string) || 1)
     if (!paginated) {
-      return res.send({ data: formattedVtt })
+      return res.send({ data: formattedVtt, meta })
     }
     // return res.send({ data: formattedVtt })
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
 
     const page = parseInt(req.query.page as string) || 1
     const reqUrl = `https://${req.headers.host}${req.url}`
-    const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
+    const pageSize =
+      parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
     const paginatedFormattedVtt = paginate(formattedVtt, page, pageSize)
     // logger.info({ paginatedFormattedVtt }, 'PAGINATED')
 
-    return res.send(formatResponseData(paginatedFormattedVtt, {
-      page,
-      url: reqUrl,
-      dataLength: formattedVtt.length,
-      size: pageSize
-    }))
+    return res.send(
+      formatResponseData(paginatedFormattedVtt, {
+        page,
+        url: reqUrl,
+        dataLength: formattedVtt.length,
+        size: pageSize,
+        meta
+      })
+    )
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())

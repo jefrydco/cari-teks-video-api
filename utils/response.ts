@@ -1,13 +1,24 @@
 import queryString from 'query-string'
 import normalizeUrl from 'normalize-url'
-import { ResponseDataFormatterOptions, ResponseDataType, ResponseDataWithPagination, PaginationUrlType, Vtt } from "./types"
+import {
+  ResponseDataFormatterOptions,
+  ResponseDataType,
+  ResponseDataWithPagination,
+  PaginationUrlType,
+  Vtt
+} from './types'
 
-function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFormatterOptions): string | null {
+function paginationUrlReplacer(
+  type: PaginationUrlType,
+  options: ResponseDataFormatterOptions
+): string | null {
   const last = Math.ceil(options.dataLength / options.size)
   const normalizedUrl = normalizeUrl(options.url, {
     removeQueryParameters: [/./]
   })
-  let parsedQueryString = queryString.parse(options.url.replace(normalizedUrl, ''))
+  let parsedQueryString = queryString.parse(
+    options.url.replace(normalizedUrl, '')
+  )
 
   if (type === PaginationUrlType.First) {
     parsedQueryString = {
@@ -45,12 +56,18 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
       return null
     }
   }
-  return normalizeUrl(`${normalizedUrl}?${queryString.stringify(parsedQueryString)}`)
+  return normalizeUrl(
+    `${normalizedUrl}?${queryString.stringify(parsedQueryString)}`
+  )
 }
 
-export function formatResponseData(data: Vtt[], options?: ResponseDataFormatterOptions): ResponseDataType {
+export function formatResponseData(
+  data: Vtt[],
+  options?: ResponseDataFormatterOptions
+): ResponseDataType {
   let _responseData: ResponseDataType = {
-    data
+    data,
+    meta: options.meta
   }
   if (options.page) {
     _responseData = {
