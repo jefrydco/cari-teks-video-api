@@ -25,7 +25,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedUrl = formatUrl(url)
     // logger.info({ formattedUrl }, 'FORMATTED_URL')
 
-    const { timedText, meta } = await getTimedText(formattedUrl, logger)
+    const { timedText, meta } = await getTimedText(formattedUrl)
+    logger.info(meta)
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
     const vtt = await getVTT(timedText)

@@ -2,7 +2,7 @@ import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 import { TimedTextReturns } from './types'
 
-export async function getTimedText(url: string, logger: ReturnType<typeof import('pino')>): Promise<TimedTextReturns> {
+export async function getTimedText(url: string): Promise<TimedTextReturns> {
   const browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,
@@ -36,22 +36,10 @@ export async function getTimedText(url: string, logger: ReturnType<typeof import
     const titleEl = el.querySelector('.ytp-title-link') as HTMLAnchorElement
     const channelNameEl = el.querySelector('.iv-branding-context-name') as HTMLDivElement
     const channelUrlEl = el.querySelector('.ytp-title-channel-logo') as HTMLAnchorElement
-
-    logger.info({
-      title,
-      channelName,
-      channelUrl
-    })
     
     title = titleEl.innerText
     channelName = channelNameEl.innerText
     channelUrl = channelUrlEl.href
-
-    logger.info({
-      title,
-      channelName,
-      channelUrl
-    })
   })
 
   await page.evaluate(() => {
