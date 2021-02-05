@@ -1,4 +1,4 @@
-import queryString from 'query-string'
+import { stringifyUrl } from 'query-string'
 import normalizeUrl from 'normalize-url'
 
 export function formatUrl(url: string) {
@@ -9,12 +9,11 @@ export function formatUrl(url: string) {
 }
 
 export function getIndexUrl(host: string, url: string) {
-  return normalizeUrl(`${host}/api?${
-    queryString.stringify({
+  return normalizeUrl(stringifyUrl({
+    url: `${host}/api`,
+    query: {
       url,
       paginated: '0'
-    })
-  }`, {
-    forceHttps: true
-  })
+    }
+  }), { forceHttps: true })
 }
