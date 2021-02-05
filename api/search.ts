@@ -25,7 +25,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
     const paginated = boolean(req.query.paginated as string || 1)
 
-    const formattedVtt = await getJson(getIndexUrl(req.headers.host, url))
+    const { data: formattedVtt, meta } = await getJson(getIndexUrl(req.headers.host, url))
     const formattedVttWithId = generateId(formattedVtt)
     const searchResult = await flexSearch(formattedVttWithId, q, marked)
     if (!paginated) {
@@ -39,7 +39,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       page,
       url: reqUrl,
       dataLength: searchResult.length,
-      size: pageSize
+      size: pageSize,
+      meta
     }))
   } catch (error) {
     logger.error(error)

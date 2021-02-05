@@ -5,8 +5,15 @@ export enum PaginationUrlType {
   Next
 }
 
+export type VideoMeta = {
+  title: string
+  channelName: string,
+  channelUrl: string
+}
+
 export type ResponseData = {
-  data: Vtt[]
+  data: Vtt[],
+  meta: VideoMeta
 }
 
 export type ResponseDataWithPagination = ResponseData & {
@@ -22,7 +29,8 @@ export type ResponseDataFormatterOptions = {
   url?: string
   page?: number
   size?: number
-  dataLength?: number
+  dataLength?: number,
+  meta: VideoMeta
 }
 
 export type ResponseDataType = ResponseData | ResponseDataWithPagination
@@ -32,4 +40,14 @@ export type Vtt = {
   start: number
   end: number
   text: string
+}
+
+export type VttWithMeta = {
+  data: Vtt[],
+  meta: VideoMeta
+}
+
+export type TimedTextReturns = {
+  timedText: string
+  meta: VideoMeta
 }

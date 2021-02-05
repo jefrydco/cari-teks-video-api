@@ -50,7 +50,8 @@ function paginationUrlReplacer(type: PaginationUrlType, options: ResponseDataFor
 
 export function formatResponseData(data: Vtt[], options?: ResponseDataFormatterOptions): ResponseDataType {
   let _responseData: ResponseDataType = {
-    data
+    data,
+    meta: options.meta
   }
   if (options.page) {
     _responseData = {

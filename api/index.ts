@@ -25,10 +25,10 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedUrl = formatUrl(url)
     // logger.info({ formattedUrl }, 'FORMATTED_URL')
 
-    const timedTextUrl = await getTimedText(formattedUrl)
+    const { timedText, meta } = await getTimedText(formattedUrl)
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
-    const vtt = await getVTT(timedTextUrl)
+    const vtt = await getVTT(timedText)
     // logger.info({ vtt }, 'VTT')
 
     const strippedVtt = stripHtml(vtt)
@@ -59,7 +59,8 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       page,
       url: reqUrl,
       dataLength: formattedVtt.length,
-      size: pageSize
+      size: pageSize,
+      meta
     }))
   } catch (error) {
     logger.error(error)

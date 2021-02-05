@@ -1,4 +1,4 @@
-import { Vtt } from "./types"
+import { VttWithMeta } from "./types"
 
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
@@ -8,9 +8,9 @@ export async function getVTT(url: string) {
   return res
 }
 
-export async function getJson(url: string): Promise<Vtt[]> {
+export async function getJson(url: string): Promise<VttWithMeta> {
   const res = await fetch(url)
     .then(_ => _.json())
-    .then(({ data }) => data)
+    .then(({ data, meta }) => ({ data, meta }))
   return res
 }
