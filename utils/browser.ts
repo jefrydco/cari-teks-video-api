@@ -1,6 +1,7 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 import { TimedTextReturns } from './types'
+import { logger } from './logger'
 
 export async function getTimedText(url: string): Promise<TimedTextReturns> {
   const browser = await puppeteer.launch({
@@ -12,10 +13,10 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
-  let timedTextUrl: string;
-  let title: string;
-  let channelName: string;
-  let channelUrl: string;
+  let timedTextUrl: string = '';
+  let title: string = '';
+  let channelName: string = '';
+  let channelUrl: string = '';
 
   page.on('request', request => {
     if (request.resourceType() === 'xhr') {
@@ -30,6 +31,29 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
   await page.goto(url, {
     waitUntil: 'networkidle0'
   })
+  
+  await page.evaluate(() => {
+    const el = document.querySelector('#player') as HTMLDivElement
+    const titleEl = el.querySelector('.ytp-title-link') as HTMLAnchorElement
+    const channelNameEl = el.querySelector('.iv-branding-context-name') as HTMLDivElement
+    const channelUrlEl = el.querySelector('.ytp-title-channel-logo') as HTMLAnchorElement
+
+    logger.info({
+      title,
+      channelName,
+      channelUrl
+    })
+    
+    title = titleEl.innerText
+    channelName = channelNameEl.innerText
+    channelUrl = channelUrlEl.href
+
+    logger.info({
+      title,
+      channelName,
+      channelUrl
+    })
+  })
 
   await page.evaluate(() => {
     const el = document.querySelector('#player') as HTMLDivElement
@@ -41,16 +65,6 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
     const el = document.querySelector('#player') as HTMLDivElement
     const captionButton = el.querySelector('.ytp-subtitles-button') as HTMLButtonElement
     captionButton.click()
-  })
-
-  await page.evaluate(() => {
-    const titleEl = document.querySelector('.ytp-title-link') as HTMLAnchorElement
-    const channelNameEl = document.querySelector('.iv-branding-context-name') as HTMLDivElement
-    const channelUrlEl = document.querySelector('.ytp-title-channel-logo') as HTMLAnchorElement
-    
-    title = titleEl.innerText
-    channelName = channelNameEl.innerText
-    channelUrl = channelUrlEl.href
   })
 
   await browser.close()
