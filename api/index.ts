@@ -44,7 +44,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const paginated = boolean((req.query.paginated as string) || 1)
     if (!paginated) {
-      return res.send({ data: formattedVtt })
+      return res.send({ data: formattedVtt, meta })
     }
     // return res.send({ data: formattedVtt })
     // logger.info({ formattedVtt }, 'FORMATTED_VTT')
