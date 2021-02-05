@@ -1,9 +1,8 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 import { TimedTextReturns } from './types'
-import { logger } from './logger'
 
-export async function getTimedText(url: string): Promise<TimedTextReturns> {
+export async function getTimedText(url: string, logger: ReturnType<typeof import('pino')>): Promise<TimedTextReturns> {
   const browser = await puppeteer.launch({
       args: chrome.args,
       executablePath: await chrome.executablePath,
