@@ -9,20 +9,18 @@ export async function getVTT(url: string) {
 }
 
 export async function getJson(url: string): Promise<VttWithMeta> {
-  const res = await fetch(url)
-    .then((_) =>
-      _.ok
-        ? _.json()
-        : {
-            data: [],
-            meta: {
-              title: '',
-              channelName: '',
-              channelUrl: '',
-              channelLogoUrl: ''
-            }
+  const res = await fetch(url).then((_) =>
+    _.ok
+      ? _.json()
+      : {
+          data: [],
+          meta: {
+            title: '',
+            channelName: '',
+            channelUrl: '',
+            channelLogoUrl: ''
           }
-    )
-    .then(({ data, meta }) => ({ data, meta }))
+        }
+  )
   return res
 }

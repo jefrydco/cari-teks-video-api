@@ -26,11 +26,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
     const paginated = boolean((req.query.paginated as string) || 1)
 
-    const { data: formattedVtt, meta } = await getJson(
-      getIndexUrl(req.headers.host, url)
-    )
-    logger.info(meta)
-    const formattedVttWithId = generateId(formattedVtt)
+    const json = await getJson(getIndexUrl(req.headers.host, url))
+    logger.info(json.meta)
+    const formattedVttWithId = generateId(json.data)
     const searchResult = await flexSearch(formattedVttWithId, q, marked)
     if (!paginated) {
       return res.send({ data: searchResult })
@@ -45,7 +43,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
         url: reqUrl,
         dataLength: searchResult.length,
         size: pageSize,
-        meta
+        meta: json.meta
       })
     )
   } catch (error) {
