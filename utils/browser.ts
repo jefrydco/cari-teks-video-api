@@ -34,7 +34,7 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
     elements.length > 0 ? (elements[0] as HTMLAnchorElement).innerText : ''
   )
   const channelName: string = await page.$$eval(
-    '.iv-branding-context-name',
+    '.ytp-title-expanded-title',
     (elements) =>
       elements.length > 0 ? (elements[0] as HTMLDivElement).innerText : ''
   )
