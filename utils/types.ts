@@ -7,12 +7,13 @@ export enum PaginationUrlType {
 
 export type VideoMeta = {
   title: string
-  channelName: string,
+  channelName: string
   channelUrl: string
+  channelLogoUrl: string
 }
 
 export type ResponseData = {
-  data: Vtt[],
+  data: Vtt[]
   meta: VideoMeta
 }
 
@@ -29,7 +30,7 @@ export type ResponseDataFormatterOptions = {
   url?: string
   page?: number
   size?: number
-  dataLength?: number,
+  dataLength?: number
   meta: VideoMeta
 }
 
@@ -43,7 +44,7 @@ export type Vtt = {
 }
 
 export type VttWithMeta = {
-  data: Vtt[],
+  data: Vtt[]
   meta: VideoMeta
 }
 

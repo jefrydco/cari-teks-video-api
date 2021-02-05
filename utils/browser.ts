@@ -1,23 +1,22 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
+import getUrls from 'get-urls'
+
 import { TimedTextReturns } from './types'
 
 export async function getTimedText(url: string): Promise<TimedTextReturns> {
   const browser = await puppeteer.launch({
-      args: chrome.args,
-      executablePath: await chrome.executablePath,
-      headless: chrome.headless,
+    args: chrome.args,
+    executablePath: await chrome.executablePath,
+    headless: chrome.headless
   })
 
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
-  let timedTextUrl: string = '';
-  let title: string = '';
-  let channelName: string = '';
-  let channelUrl: string = '';
+  let timedTextUrl: string = ''
 
-  page.on('request', request => {
+  page.on('request', (request) => {
     if (request.resourceType() === 'xhr') {
       const _timedTextUrl = request.url()
       if (_timedTextUrl.includes('https://www.youtube.com/api/timedtext')) {
@@ -30,29 +29,35 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
   await page.goto(url, {
     waitUntil: 'networkidle0'
   })
-  
-  await page.evaluate(() => {
-    const el = document.querySelector('#player') as HTMLDivElement
-    const titleEl = el.querySelector('.ytp-title-link') as HTMLAnchorElement
-    const channelNameEl = el.querySelector('.iv-branding-context-name') as HTMLDivElement
-    const channelUrlEl = el.querySelector('.ytp-title-channel-logo') as HTMLAnchorElement
-    
-    title = titleEl.innerText
-    channelName = channelNameEl.innerText
-    channelUrl = channelUrlEl.href
-  })
 
-  await page.evaluate(() => {
-    const el = document.querySelector('#player') as HTMLDivElement
-    const playButton = el.querySelector('.ytp-large-play-button') as HTMLButtonElement
-    playButton.click()
-  })
+  const title: string = await page.$$eval('.ytp-title-link', (elements) =>
+    elements.length > 0 ? (elements[0] as HTMLAnchorElement).innerText : ''
+  )
+  const channelName: string = await page.$$eval(
+    '.iv-branding-context-name',
+    (elements) =>
+      elements.length > 0 ? (elements[0] as HTMLDivElement).innerText : ''
+  )
+  const channelLogoAndUrl = await page.$$eval(
+    '.ytp-title-channel-logo',
+    (elements) => {
+      if (elements.length > 0) {
+        return {
+          channelUrl: (elements[0] as HTMLAnchorElement).href,
+          channelLogoUrl: (elements[0] as HTMLAnchorElement).style
+            .backgroundImage
+        }
+      }
+      return {
+        channelUrl: '',
+        channelLogoUrl: ''
+      }
+    }
+  )
 
-  await page.evaluate(() => {
-    const el = document.querySelector('#player') as HTMLDivElement
-    const captionButton = el.querySelector('.ytp-subtitles-button') as HTMLButtonElement
-    captionButton.click()
-  })
+  const _channelLogoUrl = Array.from(getUrls(channelLogoAndUrl.channelLogoUrl))
+  channelLogoAndUrl.channelLogoUrl =
+    _channelLogoUrl.length > 0 ? _channelLogoUrl[0] : ''
 
   await browser.close()
 
@@ -61,7 +66,7 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
     meta: {
       title,
       channelName,
-      channelUrl
+      ...channelLogoAndUrl
     }
   }
 }

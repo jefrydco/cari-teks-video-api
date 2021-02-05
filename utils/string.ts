@@ -1,8 +1,7 @@
 import { stripHtml as strip } from 'string-strip-html'
 
 export function stripHtml(string: string) {
-  return strip(string).result
-    .replace(/(<([^>]+)>)/ig, '')
+  return strip(string).result.replace(/(<([^>]+)>)/gi, '')
 }
 
 export function stripWhitespaceNewLine(string: string) {

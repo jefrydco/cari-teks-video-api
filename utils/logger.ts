@@ -7,13 +7,16 @@ const { stream, send } = logflarePinoVercel({
   sourceToken: process.env.PINO_LOG_SOURCE_TOKEN
 })
 
-export const logger = pino({
-  browser: {
-    transmit: {
-      level: 'info',
-      // @ts-ignore
-      send,
-    }
+export const logger = pino(
+  {
+    browser: {
+      transmit: {
+        level: 'info',
+        // @ts-ignore
+        send
+      }
+    },
+    level: 'debug'
   },
-  level: 'debug'
-}, stream)
+  stream
+)

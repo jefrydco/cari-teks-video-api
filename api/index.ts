@@ -26,7 +26,6 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     // logger.info({ formattedUrl }, 'FORMATTED_URL')
 
     const { timedText, meta } = await getTimedText(formattedUrl)
-    logger.info(meta)
     // logger.info({ timedTextUrl }, 'TIMED_TEXT_URL')
 
     const vtt = await getVTT(timedText)
@@ -37,13 +36,13 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const formattedVtt = vttToJson(strippedVtt)
       .filter((item) => item.type === 'cue')
-      .map(item => ({
+      .map((item) => ({
         start: toSecond((item as NodeCue).data.start || 0),
         end: toSecond((item as NodeCue).data.end || 0),
         text: stripWhitespaceNewLine((item as NodeCue).data.text)
       }))
 
-    const paginated = boolean(req.query.paginated as string || 1)
+    const paginated = boolean((req.query.paginated as string) || 1)
     if (!paginated) {
       return res.send({ data: formattedVtt })
     }
@@ -52,17 +51,20 @@ export default async function handler(req: NowRequest, res: NowResponse) {
 
     const page = parseInt(req.query.page as string) || 1
     const reqUrl = `https://${req.headers.host}${req.url}`
-    const pageSize = parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
+    const pageSize =
+      parseInt(req.query.size as string) || DEFAULT_PAGINATION_SIZE
     const paginatedFormattedVtt = paginate(formattedVtt, page, pageSize)
     // logger.info({ paginatedFormattedVtt }, 'PAGINATED')
 
-    return res.send(formatResponseData(paginatedFormattedVtt, {
-      page,
-      url: reqUrl,
-      dataLength: formattedVtt.length,
-      size: pageSize,
-      meta
-    }))
+    return res.send(
+      formatResponseData(paginatedFormattedVtt, {
+        page,
+        url: reqUrl,
+        dataLength: formattedVtt.length,
+        size: pageSize,
+        meta
+      })
+    )
   } catch (error) {
     logger.error(error)
     return res.send(Boom.internal())
