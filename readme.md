@@ -43,15 +43,17 @@ Query Params:
 
 ### Response
 
-| Key   | Data Type          | Example Value                                                                                                                        | Description                                                           |
-|-------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| data  | Array<item>        | [{start: 1000, end: 1200, text: “lorem ipsum”}]                                                                                      | Search result                                                         |
-| first | String             | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to first page                                                     |
-| last  | String             | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=23&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM | URL to last page                                                      |
-| prev  | String &vert; null | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to prev page. If the value is null, it doesn't have previous page |
-| next  | String &vert; null | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=3&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM  | URL to next page. If the value is null, it doesn't have next page     |
-| total | Number             | 229                                                                                                                                  | Search result total item                                              |
-| page  | Number             | 2                                                                                                                                    | Current result page                                                   |
+| Key   | Data Type              | Example Value                                                                                                                                                                                                                                                        | Description                                                           |
+|-------|------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
+| data  | Array<item>            | [{start: 1000, end: 1200, text: "lorem ipsum"}]                                                                                                                                                                                                                      | Search result                                                         |
+| meta  | Record<string, string> | {title: "6 Problems with our School System", channelName: "Next School", channelUrl: "https://www.youtube.com/channel/UCEb1b2lWpBA0Ux4wi8A4yJA", channelLogoUrl: "https://yt3.ggpht.com/ytc/AAUvwnj74okT3YeIm_HwnkAtiOTVzzcrirBRm7HJcAf1=s68-c-k-c0x00ffffff-no-rj"} | Meta data of the video                                                |
+| first | String                 | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM                                                                                                                                  | URL to first page                                                     |
+| last  | String                 | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=23&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM                                                                                                                                 | URL to last page                                                      |
+| prev  | String &vert; null     | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM                                                                                                                                  | URL to prev page. If the value is null, it doesn't have previous page |
+| next  | String &vert; null     | https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=3&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM                                                                                                                                  | URL to next page. If the value is null, it doesn't have next page     |
+| total | Number                 | 229                                                                                                                                                                                                                                                                  | Search result total item                                              |
+| page  | Number                 | 2                                                                                                                                                                                                                                                                    | Current result page                                                   |
+
 
 
 Each item in data containing:
@@ -66,66 +68,47 @@ Each item in data containing:
 ### Example
 
 ```shell
-curl -XPOST 'https://cari-teks-video-api.vercel.app/api/search?url=https://www.youtube.com/watch?v=klnvttPfOUM&q=web'
+curl -XPOST 'https://cari-teks-video-api.vercel.app/api/search?q=education&url=https://www.youtube.com/watch?v=okpg-lVWLbE'
 # Response
 {
   "data": [
     {
-      "start": 117,
-      "end": 120,
-      "text": "a <mark class=\"cvt-highlight\">web</mark>site that helps you find, well, local food banks."
+      "start": 2,
+      "end": 5,
+      "text": "that something is wrong with our system of <mark class=\"cvt-highlight\">education</mark>."
     },
     {
-      "start": 1502,
-      "end": 1503,
-      "text": "<mark class=\"cvt-highlight\">Web</mark> apps should be able to deliver"
+      "start": 20,
+      "end": 22,
+      "text": "that the current system of <mark class=\"cvt-highlight\">education</mark>"
     },
     {
-      "start": 2103,
-      "end": 2105,
-      "text": "So <mark class=\"cvt-highlight\">web</mark>pack doesn't actually convert modules"
+      "start": 222,
+      "end": 225,
+      "text": "There seems to be no room in the current <mark class=\"cvt-highlight\">education</mark> system"
     },
     {
-      "start": 2255,
-      "end": 2258,
-      "text": "that <mark class=\"cvt-highlight\">web</mark>pack 5 will finally be able to address that problem."
+      "start": 330,
+      "end": 332,
+      "text": "Our system of <mark class=\"cvt-highlight\">education</mark>,"
     },
     {
-      "start": 5188,
-      "end": 5190,
-      "text": "In <mark class=\"cvt-highlight\">web</mark>pack, we do the opposite."
-    },
-    {
-      "start": 5404,
-      "end": 5408,
-      "text": "any <mark class=\"cvt-highlight\">web</mark>pack_public_path magic mobile that has been set--"
-    },
-    {
-      "start": 5437,
-      "end": 5441,
-      "text": "In <mark class=\"cvt-highlight\">web</mark>pack, it's a configuration value."
-    },
-    {
-      "start": 5453,
-      "end": 5455,
-      "text": "<mark class=\"cvt-highlight\">web</mark>pack_public_path value."
-    },
-    {
-      "start": 5593,
-      "end": 5596,
-      "text": "In <mark class=\"cvt-highlight\">web</mark>pack, each compile pass is referred to as a compilation."
-    },
-    {
-      "start": 6875,
-      "end": 6881,
-      "text": "<mark class=\"cvt-highlight\">Web</mark>P, I think, also does this frequency"
+      "start": 345,
+      "end": 349,
+      "text": "fundamentally change our system of <mark class=\"cvt-highlight\">education</mark>."
     }
   ],
-  "first": "https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=1&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM",
-  "last": "https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=23&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM",
+  "meta": {
+    "title": "6 Problems with our School System",
+    "channelName": "Next School",
+    "channelUrl": "https://www.youtube.com/channel/UCEb1b2lWpBA0Ux4wi8A4yJA",
+    "channelLogoUrl": "https://yt3.ggpht.com/ytc/AAUvwnj74okT3YeIm_HwnkAtiOTVzzcrirBRm7HJcAf1=s68-c-k-c0x00ffffff-no-rj"
+  },
+  "first": "https://cari-teks-video-api.vercel.app/api/search?page=1&q=education&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dokpg-lVWLbE",
+  "last": "https://cari-teks-video-api.vercel.app/api/search?page=1&q=education&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dokpg-lVWLbE",
   "prev": null,
-  "next": "https://cari-teks-video-api.jefrydco.vercel.app/api/search?page=2&q=web&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DklnvttPfOUM",
-  "total": 229,
+  "next": null,
+  "total": 5,
   "page": 1
 }
 ```
