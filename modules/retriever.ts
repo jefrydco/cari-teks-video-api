@@ -29,13 +29,16 @@ export function retrieverSearch(req: NowRequest): RetrieverSearchReturnType {
   const index = retrieverIndex(req)
   const q = req.query.q as string
   const marked = boolean((req.query.marked as string) || 1)
-  const reqUrl = stringifyUrl({
-    url: req.headers.host,
-    query: {
-      url: req.query.url as string,
-      paginated: 0
-    }
-  })
+  const reqUrl = normalizeUrl(
+    stringifyUrl({
+      url: req.headers.host,
+      query: {
+        url: req.query.url as string,
+        paginated: 0
+      }
+    }),
+    { forceHttps: true }
+  )
 
   return {
     ...index,
