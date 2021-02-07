@@ -31,7 +31,7 @@ export function retrieverSearch(req: NowRequest): RetrieverSearchReturnType {
   const marked = boolean((req.query.marked as string) || 1)
   const reqUrl = normalizeUrl(
     stringifyUrl({
-      url: `${index.reqUrl}/api`,
+      url: `${req.headers.host}/api`,
       query: {
         url: req.query.url as string,
         paginated: 0
