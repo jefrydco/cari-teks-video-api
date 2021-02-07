@@ -2,9 +2,14 @@ import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 import getUrls from 'get-urls'
 
-import { TimedTextReturns } from './types'
+import type { NodeCue } from 'subtitle'
 
-export async function getTimedText(url: string): Promise<TimedTextReturns> {
+import { FetcherReturnType, Vtt, YoutubeCCReturnType } from '../types'
+import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
+import { vttToJson } from '../utils/vtt'
+import { toSecond } from '../utils/time'
+
+async function getYoutubeCC(url: string): Promise<YoutubeCCReturnType> {
   const browser = await puppeteer.launch({
     args: chrome.args,
     executablePath: await chrome.executablePath,
@@ -14,13 +19,13 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
   const page = await browser.newPage()
   await page.setRequestInterception(true)
 
-  let timedTextUrl: string = ''
+  let ccUrl: string = ''
 
   page.on('request', (request) => {
     if (request.resourceType() === 'xhr') {
       const _timedTextUrl = request.url()
       if (_timedTextUrl.includes('https://www.youtube.com/api/timedtext')) {
-        timedTextUrl = _timedTextUrl.replace('json3', 'vtt')
+        ccUrl = _timedTextUrl.replace('json3', 'vtt')
       }
     }
     request.continue()
@@ -62,11 +67,47 @@ export async function getTimedText(url: string): Promise<TimedTextReturns> {
   await browser.close()
 
   return {
-    timedText: timedTextUrl,
+    ccUrl,
     meta: {
       title,
       channelName,
       ...channelLogoAndUrl
     }
   }
+}
+
+export async function fetcherIndex(url: string): Promise<FetcherReturnType> {
+  const { ccUrl, meta } = await getYoutubeCC(url)
+  const data: Vtt[] = await fetch(ccUrl)
+    .then((_) => (_.ok ? _.text() : ''))
+    .then((_) =>
+      vttToJson(stripHtml(_))
+        .filter((item) => item.type === 'cue')
+        .map((item) => ({
+          start: toSecond((item as NodeCue).data.start || 0),
+          end: toSecond((item as NodeCue).data.end || 0),
+          text: stripWhitespaceNewLine((item as NodeCue).data.text)
+        }))
+    )
+
+  return {
+    data,
+    meta
+  }
+}
+
+export async function fetcherSearch(url: string): Promise<FetcherReturnType> {
+  return fetch(url).then((_) =>
+    _.ok
+      ? _.json()
+      : {
+          data: [],
+          meta: {
+            title: '',
+            channelName: '',
+            channelUrl: '',
+            channelLogoUrl: ''
+          }
+        }
+  )
 }
