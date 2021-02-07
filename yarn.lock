@@ -45,13 +45,6 @@
   resolved "https://registry.npmjs.org/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@types/joi@^17.2.3":
-  version "17.2.3"
-  resolved "https://registry.npmjs.org/@types/joi/-/joi-17.2.3.tgz#b7768ed9d84f1ebd393328b9f97c1cf3d2b94798"
-  integrity sha512-dGjs/lhrWOa+eO0HwgxCSnDm5eMGCsXuvLglMghJq32F6q5LyyNuXb41DHzrg501CKNOSSAHmfB7FDGeUnDmzw==
-  dependencies:
-    joi "*"
-
 "@types/lodash@^4.14.153":
   version "4.14.158"
   resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.158.tgz#b38ea8b6fe799acd076d7a8d7ab71c26ef77f785"
@@ -328,10 +321,10 @@ chownr@^2.0.0:
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chrome-aws-lambda@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.npmjs.org/chrome-aws-lambda/-/chrome-aws-lambda-7.0.0.tgz#efb73c8d254d433413cf6866c5eadc752d64b417"
-  integrity sha512-GbYXRPYtaA0DLfmxQpuZw1SKTP7rOA4UXiATwiFRJ4Ea6PBYSzqK0YjS7B2WimUBe//ybPfNpPIs8A3WpF0xvA==
+chrome-aws-lambda@~6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/chrome-aws-lambda/-/chrome-aws-lambda-6.0.0.tgz#e0966a5759e6b57c24584c2511fb72738b6209ff"
+  integrity sha512-XnFo6AaE5ZYpHYmOmMoj1yCYFeRTx6uFCpJnVuDREWzXevzZvo3gzkyQ6qSKsPW91VGWeQI7wQgnOpW50e+Dzg==
   dependencies:
     lambdafs "^2.0.2"
 
@@ -401,10 +394,10 @@ delegates@^1.0.0:
   resolved "https://registry.npmjs.org/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-devtools-protocol@0.0.847576:
-  version "0.0.847576"
-  resolved "https://registry.npmjs.org/devtools-protocol/-/devtools-protocol-0.0.847576.tgz#2f201bfb68aa9ef4497199fbd7f5d5dfde3b200b"
-  integrity sha512-0M8kobnSQE0Jmly7Mhbeq0W/PpZfnuK+WjN2ZRVPbGqYwCHCioAVp84H0TcLimgECcN5H976y5QiXMGBC9JKmg==
+devtools-protocol@0.0.842839:
+  version "0.0.842839"
+  resolved "https://registry.npmjs.org/devtools-protocol/-/devtools-protocol-0.0.842839.tgz#dfdb49a74fabe80256b91e878e561a1ad2a24352"
+  integrity sha512-iI3v9uuGUW02vPUXTvxl4ijnCPL/RGRVR9I+U8s7+9OG9An/bvExjQ0KrXE9V0QBLra7wANhZctB00FKBSn1gw==
 
 diff@^4.0.1:
   version "4.0.2"
@@ -741,7 +734,7 @@ isstream@~0.1.2:
   resolved "https://registry.npmjs.org/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
-joi@*, joi@^17.3.0:
+joi@^17.3.0:
   version "17.3.0"
   resolved "https://registry.npmjs.org/joi/-/joi-17.3.0.tgz#f1be4a6ce29bc1716665819ac361dfa139fff5d2"
   integrity sha512-Qh5gdU6niuYbUIUV5ejbsMiiFmBdw8Kcp8Buj2JntszCkCfxJ9Cz76OtHxOZMPXrt5810iDIXs+n1nNVoquHgg==
@@ -1111,13 +1104,13 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-7.0.1.tgz#4d4bbc910ef879680045902a26ee932715af7352"
-  integrity sha512-CIOSYtfTFbaG/li8ZJzkqPQ15tuUb9hDTfzQ/AV/kWhv1OKV/T+VzCGx1DU2CdhoEsmLBYmVb1SQ6h0eQSRuXg==
+puppeteer-core@~6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-6.0.0.tgz#16fea8229ee4053f208194cd17718318ea6e69a7"
+  integrity sha512-Mm4lVSM8CJUrHSLt2zHjlW9B2D5B3JRbkbmxzGaGTauaB9gTrM+r7gk88xfRWuaBy81pRG+nTtCBdMPzO7pjqg==
   dependencies:
     debug "^4.1.0"
-    devtools-protocol "0.0.847576"
+    devtools-protocol "0.0.842839"
     extract-zip "^2.0.0"
     https-proxy-agent "^5.0.0"
     node-fetch "^2.6.1"
