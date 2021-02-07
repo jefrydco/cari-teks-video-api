@@ -25,9 +25,9 @@ async function getYoutubeCC(url: string): Promise<YoutubeCCReturnType> {
 
   page.on('request', (request) => {
     if (request.resourceType() === 'xhr') {
-      const _timedTextUrl = request.url()
-      if (_timedTextUrl.includes('https://www.youtube.com/api/timedtext')) {
-        ccUrl = _timedTextUrl.replace('json3', 'vtt')
+      const _ccUrl = request.url()
+      if (_ccUrl.includes('https://www.youtube.com/api/timedtext')) {
+        ccUrl = _ccUrl.replace('json3', 'vtt')
       }
     }
     request.continue()
