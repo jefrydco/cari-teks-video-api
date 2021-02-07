@@ -9,6 +9,8 @@ import { stripHtml, stripWhitespaceNewLine } from '../utils/string'
 import { vttToJson } from '../utils/vtt'
 import { toSecond } from '../utils/time'
 
+require('isomorphic-fetch')
+
 async function getYoutubeCC(url: string): Promise<YoutubeCCReturnType> {
   const browser = await puppeteer.launch({
     args: chrome.args,

@@ -21,7 +21,6 @@
     "@types/subtitle": "^2.0.2",
     "boolean": "^3.0.2",
     "chrome-aws-lambda": "~6.0.0",
-    "es6-promise": "^4.2.8",
     "flexsearch": "^0.6.32",
     "get-urls": "^10.0.0",
     "isomorphic-fetch": "^3.0.0",
