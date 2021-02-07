@@ -21,17 +21,9 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       return res.send(Boom.badRequest(error.message, error))
     }
 
-    const {
-      reqUrl,
-      youtubeUrl,
-      paginated,
-      page,
-      size,
-      q,
-      marked
-    } = retrieverSearch(req)
+    const { reqUrl, paginated, page, size, q, marked } = retrieverSearch(req)
 
-    const { data, meta } = await fetcherSearch(youtubeUrl)
+    const { data, meta } = await fetcherSearch(reqUrl)
 
     if (!paginated) {
       return res.send({ data, meta })
