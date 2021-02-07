@@ -1,7 +1,4 @@
-import { stringifyUrl } from 'query-string'
-import normalizeUrl from 'normalize-url'
-
-export function formatUrl(url: string) {
+export function getYoutubeEmbedUrl(url: string) {
   // Taken from: https://stackoverflow.com/a/6904504
   const [
     _,
@@ -10,17 +7,4 @@ export function formatUrl(url: string) {
     url
   )
   return `https://www.youtube.com/embed/${id}?hl=en&cc_lang_pref=en&cc_load_policy=1&autoplay=1`
-}
-
-export function getIndexUrl(host: string, url: string) {
-  return normalizeUrl(
-    stringifyUrl({
-      url: `${host}/api`,
-      query: {
-        url,
-        paginated: '0'
-      }
-    }),
-    { forceHttps: true }
-  )
 }
