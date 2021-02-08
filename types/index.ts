@@ -12,7 +12,7 @@ export type VideoMeta = {
   channelLogoUrl: string
 }
 
-export enum PaginatorUrlType {
+export enum PaginationUrlType {
   First,
   Last,
   Prev,
