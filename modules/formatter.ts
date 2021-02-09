@@ -14,6 +14,10 @@ function getPaginationUrl(
   type: PaginationUrlType,
   options: FormatterOptions
 ): string | null {
+  if (options.dataLength === 0) {
+    return null
+  }
+
   const last = Math.ceil(options.dataLength / options.size)
   const normalizedUrl = normalizeUrl(options.reqUrl, {
     removeQueryParameters: [/./]
@@ -26,34 +30,23 @@ function getPaginationUrl(
       page: '1'
     }
   } else if (type === PaginationUrlType.Last) {
-    if (options.dataLength !== 0) {
-      query = {
-        ...query,
-        page: `${last}`
-      }
-    } else {
-      query = {
-        ...query,
-        page: '1'
-      }
+    query = {
+      ...query,
+      page: `${last}`
     }
   } else if (type === PaginationUrlType.Prev) {
-    if (options.dataLength !== 0 && options.page > 1) {
+    if (options.page > 1) {
       query = {
         ...query,
         page: `${options.page - 1}`
       }
-    } else {
-      return null
     }
   } else if (type === PaginationUrlType.Next) {
-    if (options.dataLength !== 0 && options.page < last) {
+    if (options.page < last) {
       query = {
         ...query,
         page: `${options.page + 1}`
       }
-    } else {
-      return null
     }
   }
   return normalizeUrl(
