@@ -45,7 +45,7 @@ export default async function handler(req: NowRequest, res: NowResponse) {
     const formattedData = formatter(removedIdData, {
       page,
       reqUrl,
-      dataLength: data.length,
+      dataLength: foundData.length,
       size,
       meta
     })
