@@ -14,7 +14,7 @@ Read this description in another languages:
 
 Cari Teks Video is Indonesian language of Search Text (in) Video.
 
-This API was intended to be used as an exercise in Vue.js Fundamental webinar. You can watch the playback in [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). If you curious how this API works under the hood, learn on my blog, [jefrydco](https://jefrydco.id/blog/).
+This API was intended to be used as an exercise in Vue.js Fundamental webinar. You can watch the playback in [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). If you curious how this API works under the hood, learn on my blog, [jefrydco](https://jefrydco.id/en/blog/search-closed-captions-text-youtube-video/).
 
 ## Awesome List
 

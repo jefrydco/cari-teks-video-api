@@ -12,7 +12,7 @@ Baca deskripsi ini dalam bahasa lain:
 
 ## Deskripsi
 
-API ini semula digunakan untuk latihan pada webinar Vue.js Fundamental. Teman-teman dapat melihat rekaman ulangnya di [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). Jika teman-teman penasaran bagaimana API ini bekerja di balik layar, teman-teman dapat mempelajarinya pada blog saya, [jefrydco](https://jefrydco.id/blog/).
+API ini semula digunakan untuk latihan pada webinar Vue.js Fundamental. Teman-teman dapat melihat rekaman ulangnya di [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). Jika teman-teman penasaran bagaimana API ini bekerja di balik layar, teman-teman dapat mempelajarinya pada blog saya, [jefrydco](https://jefrydco.id/blog/search-closed-captions-text-youtube-video/).
 
 ## Daftar Keren
 
