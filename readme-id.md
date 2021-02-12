@@ -4,6 +4,18 @@
 
 ![Cari Teks Video](https://repository-images.githubusercontent.com/277871059/97eb1400-64c6-11eb-913f-bdcfe5151222)
 
+## Daftar Isi
+
+- [Bahasa](#-bahasa)
+- [Deskripsi](#deskripsi)
+- [Daftar Keren](#daftar-keren)
+- [Dokumentasi API](#dokumentasi-api)
+  - [<em>Request</em>](#request)
+  - [<em>Response</em>](#response)
+  - [Contoh](#contoh)
+- [Penyangkalan](#penyangkalan)
+- [Perizinan](#perizinan)
+
 ## 🌎 Bahasa
 
 Baca deskripsi ini dalam bahasa lain:
@@ -12,7 +24,7 @@ Baca deskripsi ini dalam bahasa lain:
 
 ## Deskripsi
 
-API ini semula digunakan untuk latihan pada webinar Vue.js Fundamental. Teman-teman dapat melihat rekaman ulangnya di [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). Jika teman-teman penasaran bagaimana API ini bekerja di balik layar, teman-teman dapat mempelajarinya pada blog saya, [jefrydco](https://jefrydco.id/blog/search-closed-captions-text-youtube-video/).
+API ini semula digunakan untuk latihan pada webinar Vue.js Fundamental. Teman-teman dapat melihat rekaman ulangnya di [YouTube: Vue.js Fundamental](https://www.youtube.com/watch?v=kvDxWcxhh7c). Jika teman-teman penasaran bagaimana API ini bekerja di balik layar, teman-teman dapat mempelajarinya pada blog saya, [Jefrydco: Bagaimana Jika Kita Dapat Mencari Kata Kunci Apapun dari Video YouTube Manapun Melalui Captionnya?](https://jefrydco.id/blog/search-closed-captions-text-youtube-video/).
 
 ## Daftar Keren
 
@@ -111,6 +123,18 @@ curl -XPOST 'https://cari-teks-video-api.vercel.app/api/search?q=education&url=h
   "page": 1
 }
 ```
+
+## Penyangkalan
+
+1. "Metode" mengarah ke langkah-langkah atau penjelasan yang saya tulis pada artikel ini, [Jefrydco: Bagaimana Jika Kita Dapat Mencari Kata Kunci Apapun dari Video YouTube Manapun Melalui Captionnya?](https://jefrydco.id/blog/search-closed-captions-text-youtube-video/).
+2. "API" mengarah ke semua API yang tersedia pada https://cari-teks-video-api.vercel.app/api.
+3. Semua metode ini murni **bertujuan untuk riset dan eksperimen**.
+4. Jika YouTube memutuskan untuk mengubah skema API _caption_ atau menggunakan cara lain, metode ini **kemungkinan tidak dapat digunakan**.
+5. Karena API yang dibuat di-_host_ pada versi gratis dari Vercel yang memiliki beberapa batasan. Salah satunya adalah berapa banyak pemanggilan fungsi. Jika API tersebut tiba-tiba tidak dapat diakses, kemungkinan telah melewati batasan tersebut.
+6. Karena poin nomor 4 dan 5, saya **tidak dapat menjamin API tersebut akan dapat digunakan secara terus-menerus**. Tetapi saya akan melakukan pengecekan secara reguler untuk memastikannya tetap berjalan baik.
+7. **Jangan gunakan untuk _production_**. Saya tidak akan bertanggung jawab terhadap dampak apapun yang ditimbulkan dari penggunaan tersebut.
+8. YouTube memiliki [API Data YouTube untuk _Caption_](https://developers.google.com/youtube/v3/docs/captions?hl=id) untuk menyediakan cara resmi mengakses _caption_. Silahkan **gunakan layanan ini jika teman-teman ingin menggunakan fitur serupa untuk _production_**.
+9. Jika teman-teman menemukan bug, silahkan mengirimkan _issue_ di repositori GitHub berikut, [Cari Teks Video API](https://github.com/jefrydco/cari-teks-video-api/blob/main/readme-id.md#readme).
 
 ## Perizinan
 
