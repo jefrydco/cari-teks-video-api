@@ -1,6 +1,6 @@
 # Cari Teks Video API
 
-> Layanan API untuk mencari teks pada subtitle YouTube
+> Layanan API untuk mencari teks pada _caption_ YouTube
 
 ![Cari Teks Video](https://repository-images.githubusercontent.com/277871059/97eb1400-64c6-11eb-913f-bdcfe5151222)
 

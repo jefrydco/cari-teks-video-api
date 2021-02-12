@@ -1,6 +1,6 @@
 # Cari Teks Video API
 
-> API service for searching text in YouTube subtitle
+> API service for searching text in YouTube Closed Captions
 
 ![Cari Teks Video](https://repository-images.githubusercontent.com/277871059/97eb1400-64c6-11eb-913f-bdcfe5151222)
 
