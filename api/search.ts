@@ -47,7 +47,11 @@ export default async function handler(req: NowRequest, res: NowResponse) {
       reqUrl,
       dataLength: foundData.length,
       size,
-      meta
+      meta,
+      paginated,
+      q,
+      marked,
+      isSearch: true
     })
 
     return res.send(formattedData)
