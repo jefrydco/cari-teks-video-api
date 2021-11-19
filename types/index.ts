@@ -25,6 +25,10 @@ export type FormatterOptions = {
   size?: number
   dataLength?: number
   meta: VideoMeta
+  isSearch?: boolean
+  q?: string
+  marked?: boolean
+  paginated?: boolean
 }
 
 export type VttWithMetaPagination = VttWithMeta & {

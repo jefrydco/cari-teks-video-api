@@ -51,8 +51,13 @@ function getPaginationUrl(
   }
   return normalizeUrl(
     stringifyUrl({
-      url: normalizedUrl,
-      query
+      url: options.isSearch ? `${normalizedUrl}/search` : normalizedUrl,
+      query: {
+        ...query,
+        q: options.q,
+        marked: options.marked ? 1 : 0,
+        paginated: options.paginated ? 1 : 0
+      }
     })
   )
 }
