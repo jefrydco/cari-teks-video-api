@@ -1,6 +1,7 @@
 import chrome from 'chrome-aws-lambda'
 import puppeteer from 'puppeteer-core'
 import getUrls from 'get-urls'
+import pMemoize from 'p-memoize'
 
 import type { NodeCue } from 'subtitle'
 
@@ -78,7 +79,7 @@ async function getYoutubeCC(url: string): Promise<YoutubeCCReturnType> {
   }
 }
 
-export async function fetcherIndex(url: string): Promise<FetcherReturnType> {
+async function _fetcherIndex(url: string): Promise<FetcherReturnType> {
   const { ccUrl, meta } = await getYoutubeCC(url)
   const data: Vtt[] = await fetch(ccUrl)
     .then((_) => (_.ok ? _.text() : ''))
@@ -98,7 +99,9 @@ export async function fetcherIndex(url: string): Promise<FetcherReturnType> {
   }
 }
 
-export async function fetcherSearch(url: string): Promise<FetcherReturnType> {
+export const fetcherIndex = pMemoize(_fetcherIndex)
+
+async function _fetcherSearch(url: string): Promise<FetcherReturnType> {
   return fetch(url).then((_) =>
     _.ok
       ? _.json()
@@ -113,3 +116,5 @@ export async function fetcherSearch(url: string): Promise<FetcherReturnType> {
         }
   )
 }
+
+export const fetcherSearch = pMemoize(_fetcherSearch)

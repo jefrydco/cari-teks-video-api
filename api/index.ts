@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from '@vercel/node'
+import { VercelRequest, VercelResponse } from '@vercel/node'
 import Boom from '@hapi/boom'
 
 import {
@@ -10,7 +10,7 @@ import {
   logger
 } from '../modules'
 
-export default async function handler(req: NowRequest, res: NowResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const { error } = guardianIndex.validate(req.query)
     if (error) {
