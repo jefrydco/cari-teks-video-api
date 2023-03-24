@@ -998,9 +998,7 @@ performance-now@^2.1.0:
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
 pino-logflare@^0.3.7:
-  version "0.3.7"
-  resolved "https://registry.npmjs.org/pino-logflare/-/pino-logflare-0.3.7.tgz#dda8e7de878037d00fbfe7c3bcf07b153b931da1"
-  integrity sha512-gHuebh/Jhy/2j0eJS+EeandbpJ0z8K/l8+FlrqVNTCD3alHtrjFlaC42pA+wMwR+srRajg0JHxAmahiZ2q0wjg==
+  version "0.3.12"
   dependencies:
     axios "^0.21.1"
     batch2 "^1.0.6"
