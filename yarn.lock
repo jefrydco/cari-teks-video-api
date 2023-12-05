@@ -110,14 +110,14 @@
   integrity sha512-+mdBIb+pxJ9SLwtjc2DgolMm8U7CG6qBdCevkjSsFB7ehJ0EExFd2ltKQ6m9CoKitqXwe6Tx5h+fAcklGQD0Bw==
 
 "@types/subtitle@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@types/subtitle/-/subtitle-2.0.2.tgz#4df70f2a7db3df55c6e692ebce8b240dc4c862bd"
-  integrity sha512-qmQUnwQ9+WQA/3RyzAFZ6ZUaO9g6iTUb6aW+4B1KSr5rhLsY+B1z/8CHOFND91R5pbEISuJPFoFXvPwu9eLNvw==
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@types/subtitle/-/subtitle-2.0.6.tgz#cafee5f80e9e8a3c6d01f17563196d22358b5642"
+  integrity sha512-A7dG6VDuNxrRX446vgK5KS5KDl+J8BUSp07dGDQWjSDpgNd9Pt0jebiCr+qlesAGiDmQSHgUtwhBOr+KiALbWQ==
 
 "@types/yauzl@^2.9.1":
-  version "2.9.1"
-  resolved "https://registry.npmjs.org/@types/yauzl/-/yauzl-2.9.1.tgz#d10f69f9f522eef3cf98e30afb684a1e1ec923af"
-  integrity sha512-A1b8SU4D10uoPjwb0lnHmmu8wZhR9d+9o2PKBQT2jU5YPTKsxac6M2qGAdY7VcL+dHHhARVUDmeg0rOrcd9EjA==
+  version "2.10.3"
+  resolved "https://registry.yarnpkg.com/@types/yauzl/-/yauzl-2.10.3.tgz#e9b2808b4f109504a03cda958259876f61017999"
+  integrity sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==
   dependencies:
     "@types/node" "*"
 
