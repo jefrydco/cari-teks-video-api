@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@babel/runtime@^7.12.13":
-  version "7.12.13"
-  resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.12.13.tgz#0a21452352b02542db0ffb928ac2d3ca7cb6d66d"
-  integrity sha512-8+3UMPBrjFa/6TtKi/7sehPKqfAm4g6K+YQjyyFOLUTxzOngcRZTlAVY8sc2CORJYqdHQY8gRPHmn+qo15rCBw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@hapi/boom@^9.1.1":
   version "9.1.1"
   resolved "https://registry.npmjs.org/@hapi/boom/-/boom-9.1.1.tgz#89e6f0e01637c2a4228da0d113e8157c93677b04"
@@ -632,11 +625,6 @@ has-unicode@^2.0.0:
   resolved "https://registry.npmjs.org/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
   integrity sha1-4Ob+aijPUROIVeCG0Wkedx3iqLk=
 
-html-entities@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/html-entities/-/html-entities-2.1.0.tgz#f5de1f8d5e1f16859a74aa73a90f0db502ca723a"
-  integrity sha512-u+OHVGMH5P1HlaTFp3M4HolRnWepgx5rAnYBo+7/TrBZahuJjgQ4TMv2GjQ4IouGDzkgXYeOI/NQuF95VOUOsQ==
-
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
@@ -781,26 +769,6 @@ locate-path@^5.0.0:
   integrity sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==
   dependencies:
     p-locate "^4.1.0"
-
-lodash.clonedeep@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
-  integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
-
-lodash.isplainobject@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.npmjs.org/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
-  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
-
-lodash.trim@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/lodash.trim/-/lodash.trim-4.5.1.tgz#36425e7ee90be4aa5e27bcebb85b7d11ea47aa57"
-  integrity sha1-NkJefukL5KpeJ7zruFt9EepHqlc=
-
-lodash.without@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
-  integrity sha1-PNRXSgC2e643OpS3SHcmQFB7eqw=
 
 lodash@^4.17.15:
   version "4.17.19"
@@ -1134,40 +1102,6 @@ quick-format-unescaped@^4.0.1:
   resolved "https://registry.npmjs.org/quick-format-unescaped/-/quick-format-unescaped-4.0.1.tgz#437a5ea1a0b61deb7605f8ab6a8fd3858dbeb701"
   integrity sha512-RyYpQ6Q5/drsJyOhrWHYMWTedvjTIat+FTwv0K4yoUxzvekw2aRHMQJLlnvt8UantkZg2++bEzD9EdxXqkWf4A==
 
-ranges-apply@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/ranges-apply/-/ranges-apply-5.0.3.tgz#f264ca6d119f7fa8e27f887afb27d93dda88a284"
-  integrity sha512-Aat/2xBqdmSeyqwkE/pweHuRSx5848TbyArsz4qndu/oqeuc+W2PCYCWoF4YnXuwu8bBIebeONkIncK+KwGQ4Q==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    ranges-merge "^7.0.3"
-
-ranges-merge@^7.0.3:
-  version "7.0.3"
-  resolved "https://registry.npmjs.org/ranges-merge/-/ranges-merge-7.0.3.tgz#449262d089ec82a2342acf8465372257e2594f71"
-  integrity sha512-Gbj3Iy2NVRWOUrsydE62mnRA2sj5+hGCTdINa5y+mO+u3wtT+MLtqAXQUc9PzKPH2r9kcvqsDHrz4m333QFA8g==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    ranges-push "^5.0.3"
-    ranges-sort "^4.0.3"
-
-ranges-push@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/ranges-push/-/ranges-push-5.0.3.tgz#387732429b68ffaebff9550d295c94473977da0f"
-  integrity sha512-0FNE+17axj9+fHw5fBrgVtMBDvM4dmxpqeQ/AnHbr4a1nPg7+gQRhwHxuHH6CBQFHysVMFBN/6r49WDTR4Zs/w==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    ranges-merge "^7.0.3"
-    string-collapse-leading-whitespace "^5.0.3"
-    string-trim-spaces-only "^3.0.3"
-
-ranges-sort@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.npmjs.org/ranges-sort/-/ranges-sort-4.0.3.tgz#d082555012eb828e99c563c13e651d6163f6ae17"
-  integrity sha512-8CdHXbGnJILep+pk22hHtzJTwfNksyXZ94jw5gSvcjSPLXmKWd5jwarpeBgErzriIarjZEhVzJgpnfyUTWcShg==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-
 re2@^1.15.4:
   version "1.15.9"
   resolved "https://registry.npmjs.org/re2/-/re2-1.15.9.tgz#9ed16171edcb0bc4f0e239bf55229ff3f26acbe3"
@@ -1198,11 +1132,6 @@ readable-stream@^2.0.2, readable-stream@^2.0.6:
     safe-buffer "~5.1.1"
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
-
-regenerator-runtime@^0.13.4:
-  version "0.13.7"
-  resolved "https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
 
 request@^2.88.2:
   version "2.88.2"
@@ -1349,42 +1278,10 @@ strict-uri-encode@^2.0.0:
   resolved "https://registry.npmjs.org/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
   integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
-string-collapse-leading-whitespace@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/string-collapse-leading-whitespace/-/string-collapse-leading-whitespace-5.0.3.tgz#05c0ce764565fcf01d872b890c2af825d040737c"
-  integrity sha512-2fUXb4oio7Kgn1NkNvcQV4J7WZaWl6gcpAhG0doRCuQSJL5GtVlNARpew2ucsz/ZvhRHqNOqvuAwl9JNQKPwDQ==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-
-string-left-right@^4.0.3:
-  version "4.0.3"
-  resolved "https://registry.npmjs.org/string-left-right/-/string-left-right-4.0.3.tgz#39db29cf0fd0e9826ecede403a60afd54c632195"
-  integrity sha512-8nxLreVmqXp6lKYcd/SipCMUydD2EDC2HOyJoSf63xCXZ6fefI32g8sBXGlUrESj23Kr0rBUm4PfkfzAfQrrQA==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    lodash.clonedeep "^4.5.0"
-    lodash.isplainobject "^4.0.6"
-
 string-strip-html@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.npmjs.org/string-strip-html/-/string-strip-html-8.2.0.tgz#a49046776cdc4eda3f32befe76d9e24e2225c3b6"
-  integrity sha512-7FUvJhCkSAYrhD6ivT0+Cy3C1Tm88MxMZYgmK/DWbN55MG8+Qh1WvQz+uH07fubh2bkR1nbsIWyysZD2J/yHcQ==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    html-entities "^2.1.0"
-    lodash.isplainobject "^4.0.6"
-    lodash.trim "^4.5.1"
-    lodash.without "^4.4.0"
-    ranges-apply "^5.0.3"
-    ranges-push "^5.0.3"
-    string-left-right "^4.0.3"
-
-string-trim-spaces-only@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/string-trim-spaces-only/-/string-trim-spaces-only-3.0.3.tgz#360572b9100198ad8a78164957735694c96fb5f0"
-  integrity sha512-/j2Vw5TLj7FQinyK9OP4WTMaIx+rCap/cwQ6WWTeLUy8vwydBkwjzDsXAbL0pKzQzxtjl366QekzqwlRklgggA==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/string-strip-html/-/string-strip-html-8.5.0.tgz#5e239fe84016fad7b33ca02d23c591f1ccb6af75"
+  integrity sha512-5ICsK1B1j0A3AF1d45m0sqQCcmi1Q+t1QpF+b794LO5FTHV+ITkGR5C+UCDJQZgs5LMuRruqr6j48PxQVIurJQ==
 
 string-width@^1.0.1:
   version "1.0.2"
